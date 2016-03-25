@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang='en-GB'>
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demand Promo</title>
+  <link rel="stylesheet" href="scripts/SemanticUI/semantic.min.css" />
+  <link rel="stylesheet" href="scripts/SweetAlert/sweetalert.css" />
+  <link rel="stylesheet" href="styles/semantic-custom.css" />
+  <link rel="stylesheet" href="styles/remodal.css" />
+  <link rel="stylesheet" href="styles/remodal-default-theme.css" />
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.sync.bootstrap.min.js"></script>
+</head>
+<body>
+<div class="remodal" data-remodal-id="modal"
+  data-remodal-options="hashTracking: false, closeOnOutsideClick: false" style="background-color: #00ADDB;  box-shadow: 3px 3px 5px #888888;">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h1 class="gotham-light remodal-h1" style="color: snow !important;">FREE QUOTE WITHIN</h1>
+    <h1 class="gotham-light" style="color: snow !important;"> &#9679; 15 MINUTES &#9679;</h1>
+    <div class="ui grid">
+      <form class="ui form getquote segment" method="POST" action="sendMail.php" id="get-quote-form-modal" enctype="multipart/form-data" style="border: 0 !important; box-shadow: none !important; margin-right: auto; margin-left: auto !important;
+    display: block;">
+        <div class="field">
+          <input type="text" name="name" id="get-quote-name-modal"  placeholder="Name">
+        </div>
+        <div class="field">
+          <input type="text" name="email" id="get-quote-email-modal" placeholder="Email">
+        </div>
+        <div class="field">
+          <input type="text" name="quantity" id="get-quote-quantity-modal" placeholder="Quantity">
+        </div>
+        <div class="field">
+          <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
+            <option value="product"> Product </option>
+          </select>
+        </div>
+        <div class="field">
+           <input style="" id="get-quote-file-upload-modal" class="form-control"
+                    type="file" name="get-quote-file-upload-modal">
+        </div>
+          <button class="ui getquote button gotham-light" id="get-quote-modal">GET QUOTE</button>
+  <button class="ui primary loading button" id="get-quote-modal-loader" style="display: none;">Loading</button>
+      </form>
+    </div>
+  <br>
+
+</div>
+
+  <div id='navbar-container'></div>
+  <div id='screen-container' style="min-height: 100%;"></div>
+  <div id='footer-container' style="margin-top: -1rem;"></div>
+  <script id='template' type='text/html'>
+   <div id="products-landing-container"></div>
+   <div id="products-main-container"></div>
+   <div id="products-container"></div>
+
+ </script>
+
+ <script id="get-quote-module" type="text/html">
+  <div class="ui grid">
+   <div class="computer only row">
+      <form class="ui form getquote segment" method="POST" id="get-quote-form" action="sendMail.php" enctype="multipart/form-data" style="margin-top: 10px; width: 100% !important; margin-left: 0 !important;  z-index: 101; box-shadow: 3px 3px 5px #888888;">
+        <h2 class="ui header getquote gotham-light" style="text-align: center;"> FREE QUOTE WITHIN </h2>
+        <div style="text-align: center; width: 100%;">
+          <h2 class="ui header getquote gotham-light" style="margin-bottom: 20px;"> &#9679; 15 MINUTES &#9679;</h2>
+        </div>
+        <div class="field">
+          <input type="text" name="name" placeholder="Name" id="get-quote-name">
+        </div>
+        <div class="field">
+          <input type="text" name="email" placeholder="Email" id="get-quote-email">
+        </div>
+        <div class="field">
+          <input type="text" name="quantity" placeholder="Quantity" id="get-quote-quantity">
+        </div>
+        <div class="field">
+          <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
+            <option value="product"> Product </option>
+          </select>
+        </div>
+        <div class="field">
+            <input style="" id="get-quote-file-upload" class="form-control"
+                        type="file" name="get-quote-file-upload">
+            <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+        </div>
+        <button class="ui getquote button gotham-light" id="get-quote-module" on-click="getQuoteInit">GET QUOTE</button>
+        <button class="ui primary loading button" id="get-quote-loader" style="display: none;">Loading</button>
+      </form>
+   </div>
+ </script>
+
+ <script id="products-landing-template" type="text/html">
+    <div class="ui vertical stripe segment" id="home-landing-segment" style="background-color: #F5F5F5; padding-bottom: 0; width: 100%;">
+        <div class="ui stackable grid" id="products-landing-banner" style="padding-bottom: 50px; height: 400px; background: url('images/main-products/PRODUCTS_HEADER.jpg') no-repeat center center; -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; -o-background-size: 100px 100%; background-size: 100% 400px; ">
+          <div class="three column row" >
+            <div class="column">
+              
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column">
+              <!-- <div class="get-quote-popup" style=""></div> -->
+            </div>
+          </div>
+      </div>
+      <!-- <div id="middle-section-landing" style="background-color: white; height: 50px; width: 100%;">
+        <div class="ui grid">
+          <div class="computer and tablet only row" style="padding: 0">
+            <div class="twelve wide right aligned column">
+              <div id="middle-section-images" style=" float: right; margin-right: 10%;">
+                <div style="height: 50px; display: inline; float: left; clear: none;"> 
+                  <img class="get-quote-image"src="images/landing-home/TRUSTPILOT.png" style="height: 50px;" />
+                </div>
+                <div style="height: 50px; display: inline; float:left; clear: none;"> 
+                  <img class="get-quote-image"src="images/landing-home/5STAR.png"style="height: 50px; display: inline-block;" />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="four wide column">
+
+            </div>
+          </div>
+          <div class="mobile only row" style="padding: 0">
+            <div class="middle aligned column" style=" display: inline-block; width: auto !important; margin-left: auto; margin-right: auto;">
+              <div class="middle-aligned-landing-images" style="height: 35px; display: inline; float: left; clear: none; margin-right: auto;"> 
+                <img class="" src="images/landing-home/TRUSTPILOT.png" style="height: 100%;" />
+              </div>
+              <div class="middle-aligned-landing-images" style="height: 35px; display: inline; float:left; clear: none;"> 
+                <img class=""src="images/landing-home/5STAR.png"style="height: 100%; display: inline-block;" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+      </div> -->
+      
+    </div>
+ </script>
+ <script id="products-main-template" type="text/html">
+    <div class="ui vertical stripe segment" id="home-landing-segment" style="background-color: snow; padding-bottom: 0;">
+        <div class="ui grid">
+          <div class="computer only row">
+            <div class="column" style="width: auto; margin-left: auto; margin-right: auto;">
+              <div style="display: inline-block;">
+                <img id="free-imprint-image" style="height: 75px; vertical-align: middle;" src="images/main-products/FREEIMPRINT.png" />
+
+                <span id="free-imprint-text" class="gotham-default" style="color: #f26202; white-space: nowrap; padding-left: 10px; letter-spacing: 2px; font-size: 2em;"> <b>FREE</b> IMPRINT </span>
+              </div>
+            
+              <div style="display: inline-block;">
+                <img id="free-shipping-image" style="height: 75px; vertical-align: middle;"  src="images/main-products/FREESHIPPING.png" />
+
+                <span id="free-shipping-text"  class="gotham-default" style="color: #f26202; white-space: nowrap; padding-left: 10px; letter-spacing: 2px; font-size: 2em;"> <b>FREE</b> SHIPPING </span>
+              </div>
+            </div>
+          </div>
+          <div class="tablet only row">
+            <div class="column"  style="width: auto; margin-left: auto; margin-right: auto;">
+              <div style="display: inline-block;">
+                <img id="free-imprint-image" style="height: 50px; vertical-align: middle;" src="images/main-products/FREEIMPRINT.png" />
+
+                <span id="free-imprint-text" class="gotham-default" style="color: #f26202; padding-left: 10px; letter-spacing: 2px; font-size: 1.5em;"> <b>FREE</b> IMPRINT </span>
+              </div>
+            
+              <div style="display: inline-block;">
+                <img id="free-shipping-image" style="height: 50px; vertical-align: middle;"  src="images/main-products/FREESHIPPING.png" />
+
+                <span id="free-shipping-text"  class="gotham-default" style="color: #f26202; padding-left: 10px; letter-spacing: 2px; font-size: 1.5em;"> <b>FREE</b> SHIPPING </span>
+              </div>
+              </div>
+          </div>
+          <div class="mobile only row">
+          <div class="column" style="width: auto; margin-left: auto; margin-right: auto;">
+              <div class="fixed-column-child" style="display: inline-block; padding-right: 20px;">
+                <img id="free-imprint-image" style="height: 45px; vertical-align: middle;" src="images/main-products/FREEIMPRINT.png" />
+                <span id="free-imprint-text" class="gotham-default" style="color: #f26202; white-space: nowrap; letter-spacing: 2px; font-size: 1.2em;"> <b>FREE</b> IMPRINT </span>
+              </div>
+            
+              <div class="fixed-column-child" style="display: inline-block; padding-left: 20px;">
+                <img id="free-shipping-image" style="height: 45px; vertical-align: middle;"  src="images/main-products/FREESHIPPING.png" />
+                <span id="free-shipping-text"  class="gotham-default" style="color: #f26202; white-space: nowrap; letter-spacing: 1px; font-size: 1.2em;"> <b>FREE</b> SHIPPING </span>
+              </div>
+          </div>
+        </div>
+    </div>
+ </script>
+ <script id="products-template" type="text/html">
+    <div class="ui products stackable grid" style="padding-bottom: 50px;">
+        <div class="computer and tablet only row">
+            <div class="ten wide column">
+                <div class="ui stackable grid">
+                  <div class="two column row">
+                    <div class="products column">
+                      <div class="products item">
+                        <div class="image">
+                          <img class="products-image" src="images/products-home/powerbanks.png">
+                        </div>
+                        <div class="content">
+                          <a class="products header gotham-light">Powerbanks</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="products column">
+                      <div class="products item">
+                        <div class="image">
+                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="content">
+                          <a class="products header gotham-light">Powerbanks</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="products column">
+                      <div class="products item">
+                        <div class="image">
+                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="content">
+                          <a class="products header gotham-light">Powerbanks</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="products column">
+                      <div class="products item">
+                        <div class="image">
+                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="content">
+                          <a class="products header gotham-light">Powerbanks</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="products column">
+                      <div class="products item">
+                        <div class="image">
+                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="content">
+                          <a class="products header gotham-light">Powerbanks</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="products column">
+                      <div class="products item">
+                        <div class="image">
+                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="content">
+                          <a class="products header gotham-light">Powerbanks</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          <div class="six wide column">
+              <div style="max-width: 350px !important;" class="get-quote-popup"></div>
+              <div style="max-width: 350px !important;" class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2df20000ff000584c750" data-style-height="450px" data-style-width="100%" data-stars="1,2,3,4,5">
+<a href="https://www.trustpilot.com/review/axizgroup.com" target="_blank">Trustpilot</a>
+</div>
+          </div>
+          <div class="sixteen wide column" style="padding-top: 15px;">
+              <div class="ui stackable divided grid">
+              <div class="one column row">
+                <div class="column">
+                    <div class="ui divider" style="width: 70%; margin-right: auto; margin-left: auto;"></div>
+                    <div style="position: relative; margin-right: auto; margin-left: auto; text-align: center;">
+                      <p class="gotham-bold" style="width: 100%; color:#f26202; font-size: 3em; letter-spacing: 2.5px;">{{pluginTitle}} </p>
+                    </div>
+                </div>
+              </div>
+                  <div class="three column row">
+                      <div class="column plugin-column" style="">
+                        <div class="item">
+                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
+                            <img src="images/main-products/PBART1.png" class="plugin-image" style="">
+                          </div>
+
+                          <div class="content plugin-content">
+                            <a class="promotions description">
+                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto; font-size: 1.2em;">
+                                {{plugin1}}
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column plugin-column">
+                        <div class="item">
+                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
+                            <img src="images/main-products/PBART2.png" class="plugin-image" style="">
+                          </div>
+
+                          <div class="content plugin-content">
+                            <a class="promotions description">
+                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto; font-size: 1.2em;">
+                                {{plugin2}}
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column plugin-column">
+                        <div class="item">
+                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
+                            <img src="images/main-products/PBART3.png" class="plugin-image" style="">
+                          </div>
+
+                          <div class="content plugin-content">
+                            <a class="promotions description">
+                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto; font-size: 1.2em;">
+                                {{plugin3}}
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="mobile only row">
+          <div class="ten wide column">
+              <div class="ui grid">
+                <div class="two column row">
+                  <div class="products column">
+                    <div class="products item">
+                      <div class="image">
+                        <img class="products-image-mobile" src="images/products-home/powerbanks.png">
+                      </div>
+                      <div class="content">
+                        <a class="products header gotham-light">Powerbanks</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="products column">
+                    <div class="products item">
+                      <div class="image">
+                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                      </div>
+                      <div class="content">
+                        <a class="products header gotham-light">Powerbanks</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="products column">
+                    <div class="products item">
+                      <div class="image">
+                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                      </div>
+                      <div class="content">
+                        <a class="products header gotham-light">Powerbanks</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="products column">
+                    <div class="products item">
+                      <div class="image">
+                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                      </div>
+                      <div class="content">
+                        <a class="products header gotham-light">Powerbanks</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="products column">
+                    <div class="products item">
+                      <div class="image">
+                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                      </div>
+                      <div class="content">
+                        <a class="products header gotham-light">Powerbanks</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="products column">
+                    <div class="products item">
+                      <div class="image">
+                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                      </div>
+                      <div class="content">
+                        <a class="products header gotham-light">Powerbanks</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="six wide column">
+            <div class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2df20000ff000584c750" data-style-height="423px" data-style-width="100%" data-stars="1,2,3,4,5">
+                <a href="https://www.trustpilot.com/review/axizgroup.com" target="_blank">Trustpilot</a>
+            </div>
+          </div>
+          <div class="sixteen wide column" style="padding-top: 15px;">
+              <div class="ui stackable divided grid">
+              <div class="one column row">
+                <div class="column">
+                    <div class="ui divider" style="width: 70%; margin-right: auto; margin-left: auto;"></div>
+                    <div style="position: relative; margin-right: auto; margin-left: auto; text-align: center;">
+                      <p class="gotham-bold" style="width: 100%;color:#f26202; font-size: 2.3em;"> {{pluginTitle}} </p>
+                    </div>
+                </div>
+              </div>
+                  <div class="three column row">
+                      <div class="column" style="border-top: 0 !important;">
+                        <div class="item">
+                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
+                            <img src="images/main-products/PBART1.png" class="plugin-image" style="">
+                          </div>
+
+                          <div class="content">
+                            <a class="promotions description">
+                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto;">
+                                {{plugin1}}
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="item">
+                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
+                            <img src="images/main-products/PBART2.png" class="plugin-image" style="">
+                          </div>
+
+                          <div class="content">
+                            <a class="promotions description">
+                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto;">
+                                {{plugin2}}
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="item">
+                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
+                            <img src="images/main-products/PBART3.png" class="plugin-image" style="">
+                          </div>
+
+                          <div class="content">
+                            <a class="promotions description">
+                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto;">
+                                {{plugin3}}
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+ </script>
+
+ <script id="products-plug-template">
+
+ </script>
+<!--  -->
+<script id="navbar-template" type="text/html">
+   <div class="ui inverted menu grid" style="border-radius: 0rem !important;">
+     <div class="mobile only row"style="width: 100%;">
+      <div id="mobile-container"></div>
+    </div>
+
+    <div class="computer and tablet only row" style="width: 100%; padding: 0 !important; height: 75px;">
+      <div id="computer-tablet-container"></div>
+    </div>
+</script>
+<script id="footer-template" type="text/html">
+ <div class="ui inverted vertical footer segment " style="background-color: #cccccc; min-height: 250px;">
+   <div class="ui grid">
+      <div class="computer and tablet only row" style="height: 100%;">
+        <div class="three wide column" >
+              <div style="padding-top: 15px;">
+                <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Contact </span><br/>
+              </div>
+              <div style="padding-top: 15px;">
+                <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> About Us </span><br/>
+              </div>
+              <div style="padding-top: 15px;">
+                <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Terms & Conditions </span><br/>
+              </div>
+              <div style="padding-top: 15px;">
+                <span class="home-footer-label-text gotham-light"style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Your Privacy </span><br/>
+              </div>
+        </div>
+        <div class="three wide column" >
+            <div style="padding-top: 15px;">
+              <span class="gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Products </span><br/>
+            </div>
+        </div>
+        <div class="five wide column" >
+            <div class="ui stackable grid">
+              <div class="row">
+                <div class="middle aligned column" style="">
+                    <div style="padding: 15px; display: inline-block;">
+                      <img src="images/footer-home/VISA.png" style="height: 45px;" />
+                    </div>
+                    <div style="padding: 15px; display: inline-block;">
+                      <img src="images/footer-home/MASTERCARD.png"  style="height: 45px;"  />
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                    <div style="padding: 15px; display: inline-block;">
+                        <img src="images/footer-home/PAYPAL.png"  style="height: 45px;" />
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="five wide column" >
+          <div class="row">
+            <div class="column">
+                <div style="padding: 15px; display: inline-block;">
+                  <img src="images/footer-home/IG.png" style="height: 45px;" />
+                </div>
+                <div style="padding: 15px; display: inline-block;">
+                  <img src="images/footer-home/TWITTER.png"  style="height: 45px;"  />
+                </div>
+                <div style="padding: 15px; display: inline-block;">
+                  <img src="images/footer-home/FACEBOOK.png"  style="height: 45px;"  />
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mobile only three column row" style="height: 100%;">
+        <div class="column" >
+          <div style="padding-top: 15px;">
+              <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px"> Contact </span><br/>
+          </div>
+          <div style="padding-top: 15px;">
+              <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> About </span><br/>
+          </div>
+          <div style="padding-top: 15px;">
+              <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> T&C </span><br/>
+          </div>
+          <div style="padding-top: 15px;">
+              <span class="home-footer-label-text gotham-light"style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> Privacy </span><br/>
+          </div>
+          <div style="padding-top: 15px;">
+              <span class="gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> Products </span><br/>
+          </div>
+        </div>
+        <div class="column" >
+            <div class="ui stackable grid">
+              <div class="two column row">
+                <div class="column">
+                  <img src="images/footer-home/VISA.png" style="height: 35px;" />
+                </div>
+                <div class="column">
+                  <img src="images/footer-home/MASTERCARD.png"  style="height: 35px;"  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                  <img src="images/footer-home/PAYPAL.png"  style="height: 35px;" />
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="column" >
+        <div class="ui stackable grid">
+          <div class="three column row">
+            <div class="column">
+              <img src="images/footer-home/IG.png" style="height: 35px;" />
+            </div>
+            <div class="column">
+                <img src="images/footer-home/TWITTER.png"  style="height: 35px;"  />
+            </div>
+            <div class="column">
+                <img src="images/footer-home/FACEBOOK.png"  style="height: 35px;"  />
+            </div>
+        </div>
+      </div>
+      </div>
+      
+   </div>
+   <div class="row">
+        <div class="column" style="text-align: center; margin-top: 10%;">
+        <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); font-size: 1.6em;"> &copy; 2016 | Web Development by <a target="__blank" href="http://www.jdmdev.net" style="color: rgba(27, 28, 29, 0.39); text-decoration: none;">www.jdmdev.net</a></span>
+        </div>
+      </div>
+ </div>
+</script>
+<script id="mobile-template" type="text/html">
+  <div class="ui basic grid">
+   <div class="row">
+     <div class="ten wide middle left aligned column">
+       <div id="mobile-image-left" style="display: inline-block;">
+        <a href="index.html"><img src="images/logo_test.png" style="width: 100px; height: 50px;" /></a>
+       </div>
+       <div class="ui dropdown link borderless item" style="display: inline-block; margin-top: -40px;">
+          <i class="large sidebar icon"></i>
+          <div class="menu">
+            <div class="item">
+              Products
+            </div>
+            <div class="item">
+              About
+            </div>
+            <div class="item">
+              Contact
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="six wide right aligned column">
+      <div id="get-quote-right">
+        <button class="ui orange mini button" style="height: 50px; width: auto;" data-remodal-target="modal" href="#">GET QUOTE</button>
+     </div>
+   </div>
+ </div>
+</script>
+
+<script id="computer-tablet-template" type="text/html">
+  <div class="ui basic grid">
+   <div class="row" style="padding: 0 !important;">
+     <div class="two wide left aligned column" style=" padding-left: 30px;">
+       <a href="index.html"><img src="images/logo_test.png" style="min-width: 105px; height: 75px; margin-top: 15px;" /></a>
+     </div>
+
+     <div class="eleven wide middle aligned column" style="height: 100%;">
+       <div class="ui white four borderless item menu" style="padding: 0 !important; height: 85px; min-height: 100%;">
+        <a id="borderless-item-products" class="borderless item active gotham-default">
+          Products
+          
+        </a>
+        <a id="borderless-item-about" class="borderless item gotham-default">
+          About
+        </a>
+        <a id="borderless-item-contact" class="borderless item gotham-default">
+          Contact
+        </a>
+        <span class="borderless item gotham-default">
+          <i class="call icon"></i> (855) 392-9301
+        </span>
+      </div>
+     </div>
+
+     <div class="three wide right aligned column">
+       <div style="padding-right: 20px;">
+        <button class="ui orange small button gotham-light" style="height: 40px;margin-top: 30px;width: 100%;" data-remodal-target="modal" href="#">GET QUOTE</button>
+       </div>
+     </div>
+   </div>
+ </div>
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+<script src='scripts/SemanticUI/semantic.min.js'></script>
+<script src='scripts/remodal.js'></script>
+<script src='scripts/SweetAlert/sweetalert.min.js'></script>
+<script src='scripts/numeric.js'></script>
+<script>
+$(document).ready(function() {
+  $('#get-quote-quantity').numeric({decimal: false, negative: false});
+  $('#get-quote-quantity-modal').numeric({decimal: false, negative: false});
+  $('#get-quote-form').submit(function (e) {
+       if($('#get-quote-quantity').val().length == 0 || $('#get-quote-name').val().length == 0 || $('#get-quote-email').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+            e.preventDefault();
+       }
+  });
+
+  $('#get-quote-form-modal').submit(function (e) {
+       if($('#get-quote-quantity-modal').val().length == 0 || $('#get-quote-name-modal').val().length == 0 || $('#get-quote-email-modal').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+            e.preventDefault();
+       }
+  });
+            
+});
+
+function getQueryParams(qs) {
+    qs = qs.split('+').join(' ');
+
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
+
+ var rxMain = new Ractive({
+           // The `el` option can be a node, an ID, or a CSS selector.
+           el: '#screen-container',
+           template: '#template',
+           data: { 
+             name: 'world',
+             products: [
+
+             ]
+           }
+         });
+
+ var rxNavbar = new Ractive({
+   el:'#navbar-container',
+   template: '#navbar-template',
+   data: {
+   }
+ });
+
+ var rxFooter = new Ractive({
+   el:'#footer-container',
+   template: '#footer-template',
+   data: {
+   }
+ });
+
+ var rxMobileNav = new Ractive({
+   el:'#mobile-container',
+   template: '#mobile-template',
+   data: {
+   },
+   onrender: function() {
+    $('.dropdown')
+    .dropdown({
+        // you can use any ui transition
+        transition: 'drop'
+      })
+    ;
+    this.on({
+      getQuoteModal: function() {
+        $('.ui.modal')
+          .modal('show')
+        ;
+      }
+    });
+  }
+});
+
+var rxLandingProducts = new Ractive({
+   el:'#products-landing-container',
+   template: '#products-landing-template',
+   data: {
+      isMobile: false
+   }
+ });
+
+var rxMainProducts = new Ractive({
+   el:'#products-main-container',
+   template: '#products-main-template',
+   data: {
+      isMobile: false
+   }
+ });
+
+var rxProducts = new Ractive({
+   el:'#products-container',
+   template: '#products-template',
+   data: {
+      isMobile: false,
+      pluginTitle: 'LOREM IPSUM',
+      plugin1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ',
+      plugin2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ',
+      plugin3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
+   }
+ });
+ var rxDesktopNav = new Ractive({
+   el:'#computer-tablet-container',
+   template: '#computer-tablet-template',
+   data: {
+   },
+   onrender: function() {
+      this.on({
+        getQuoteModal: function() {
+          $('.ui.modal')
+            .modal('show')
+          ;
+        }
+      })
+   }
+ });
+
+  var rxGetQuote = new Ractive({
+   el:'.get-quote-popup',
+   template: '#get-quote-module',
+   data: {
+    file: null,
+    getQuoteProductSelect: 'product'
+   },
+   onrender: function() {
+    $('#get-quote-file-upload').on('change', function(event) {
+      console.log(event);
+      var file = event.target.files[0];
+      rxGetQuote.set('file', file);
+       //TODO do something with fileList.  
+    });
+
+    this.on({
+      fileUpload: function() {
+      },
+      getQuoteInit: function() {
+        
+      },
+      getQuoteModalInit: function() {
+        
+      }
+    });
+   }
+ });
+  //slows down application, although this works
+  rxLandingProducts.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
+  var prev = 'notset';
+
+  $('#get-quote-file-upload-modal').on('change', function(event) {
+    console.log(event);
+    var file = event.target.files[0];
+    rxGetQuote.set('file', file);
+     //TODO do something with fileList.  
+  });
+  setInterval(function() {
+    if(prev == 'notset')
+      prev = ($('.mobile.only.row').css('display') != "none");
+
+    if(($('.mobile.only.row').css('display') != "none") != prev) {
+      rxLandingProducts.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
+      rxMainProducts.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
+      rxProducts.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
+      prev = ($('.mobile.only.row').css('display') != "none");
+    }
+  }, 0);
+</script>
+
+</body>
+</html>

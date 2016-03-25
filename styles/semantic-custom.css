@@ -1,0 +1,544 @@
+  @font-face {
+    font-family: GothamDefault;
+    src: url(../fonts/Gotham-Medium.otf);
+  }
+
+    @font-face {
+    font-family: GothamLight;
+    src: url(../fonts/Gotham-Light.ttf);
+  }
+
+    @font-face {
+    font-family: GothamBold;
+    src: url(../fonts/Gotham-Bold.otf);
+  }
+
+    @font-face {
+    font-family: GothamBlack;
+    src: url(../fonts/Gotham-Black.otf);
+  }
+
+ .gotham-bold {
+      font-family: GothamBold !important;
+  }
+ .gotham-default {
+      font-family: GothamDefault !important;
+  }
+ .gotham-light {
+      font-family: GothamLight !important;
+  }
+
+  .remodal-close:hover, .remodal-close:focus, .remodal-close {
+      color: white !important;
+  }
+
+  h1.remodal-h1 {
+        margin: calc(.5rem - .14285em) 0 1rem !important;
+  }
+
+  #computer-tablet-container {
+    width: 100%;
+  }
+  #mobile-container {
+    width: 100%;
+  }
+  .image {
+    text-align: center;
+  }
+  #get-quote-right {
+    padding-right: 20px;
+  }
+
+  #mobile-image-left {
+    padding-left: 20px;
+  }
+
+  .item {
+    border-radius: 0rem !important;
+
+  }
+
+  .item > .content{
+    text-align: center;
+
+  }
+
+  .item > h1.promotions-header{
+    text-align: center;
+    color: #FBFFFF;
+  }
+
+  .products.header {
+    color: #666666;
+  }
+
+  .promotions.header {
+    color: #FBFFFF;
+    font-size: 2em;
+
+  }
+
+  .promotions-header-styling-200 {
+    max-width: 200px;
+    line-height: 25px;
+  }
+
+  .promotions-header-styling-150 {
+    max-width: 200px;
+    line-height: 25px;
+  }
+
+
+  .products.column {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .ui.divided.grid:not([class*="vertically divided"])>.row>.column {
+    box-shadow: -1px 0 0 0 rgba(251,255,255,.15);
+  }
+
+  .home-guarantee-title {
+    color: #EE7421;
+  }
+
+  .ui.form.getquote.segment {
+    background-color: #00ADDB;
+  }
+
+  .ui.getquote.button {
+    background-color: #EE7421;
+    color: white;
+  }
+
+  .ui.form.getquote button {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .ui.form.getquote.field div{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  #get-quote-file-upload {
+    width: 190px!important;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .ui.form .field {
+    padding-bottom: 20px;
+  }
+
+ .ui.header.getquote {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    font-size: 1.5em;
+    color: #FBFFFF;
+ }
+
+ .ui.white.four.borderless.item .borderless.item {
+  height: 100%;
+ }
+
+.products-image {
+  width: 100%;
+  height: 100%;
+  max-height: 280px;
+  max-width: 280px;
+}
+.products-image-mobile {
+  width: 100%;
+  height: 100%;
+  max-height: 320px;
+  max-width: 320px;
+}
+ #borderless-item-products:hover, #borderless-item-about:hover, #borderless-item-contact:hover{
+    cursor: pointer; 
+    cursor: hand; 
+    color: rgba(0,0,0,.87) !important;
+    background-color: snow;
+    border-bottom: thick solid #EE7421;
+ }
+
+   .promotions-image 
+  {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .borderless.item.menu .borderless.item {
+        position: relative;
+    top: 53%;
+    transform: translateY(-50%);
+    padding: 0 !important;
+  }
+
+  .plugin-image {
+    height: 100%;
+    width: 100%;
+    max-width: 225px;
+    max-height: 225px;
+  }
+
+  .plugin-column {
+    box-shadow: rgba(0,0,0,.15);
+  }
+
+  .plugin-content {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+
+  .slick-prev, .slick-next {
+    color: #F5F5F5;
+    background: rgb(50,50,55);
+  }
+
+  .slick-prev:before, .slick-next:before {
+    color: rgb(50,50,55) !important;
+  }
+
+  .option.label {
+    height: 25px;
+    width: 25px;
+  }
+/*MEDIA QUERIES*/
+
+/*Home Products*/
+
+@media screen and (max-width: 1290px) {
+  .ui.form.getquote.segment {
+    width: 250px !important;
+    margin-left: 20% !important;
+  }
+
+  #middle-section-images {
+    margin-right: 2% !important;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  .products.grid {
+    padding-left: 50px; 
+    padding-right: 50px;
+  }
+
+  .promotions.grid {
+    padding-left: 10px; 
+    padding-right: 10px;
+  }
+
+  .home-guarantee-title {
+    font-size: 3em;
+  }
+
+  .home-lower-title {
+    font-size: 2em;
+  }
+
+  .ui.menu.four.item .item {
+    width: 23%;
+  }
+
+
+}
+
+@media screen and (max-width: 991px) {
+  .get-quote-image {
+    height: 35px !important;
+  }
+
+  #middle-section-landing {
+    height: 35px !important;
+  }
+
+  #middle-section-images {
+    margin-right: auto !important;
+    margin-left:auto !important;
+  }
+
+  .bottom-landing-quote {
+    max-width: 60% !important;
+  }
+
+    .promotions-header {
+    font-size: 2.5em !important;
+  }
+
+/*  #home-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_TABLETBIG.jpg') no-repeat center center !important;
+        -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }*/
+
+
+  #products-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_TABLETBIG.jpg') no-repeat center center !important;
+        -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .get-quote-image {
+    height: 35px !important;
+  }
+
+  .plugin-image {
+    max-width: 180px;
+    max-height: 180px;
+  }
+/*  #free-shipping-image, #free-imprint-image {
+    height: 65px !important;
+  }
+
+  #free-shipping-text, #free-imprint-text {
+    font-size: 1.7em !important;
+  }*/
+
+}
+
+/*@media screen and (max-width: 850px) {
+    #free-shipping-image, #free-imprint-image {
+    height: 65px !important;
+  }
+
+  #free-shipping-text, #free-imprint-text {
+    font-size: 1.4em !important;
+  }
+}*/
+
+@media screen and (max-width: 800px)  {
+  #home-products-segment .grid .row .column {
+    max-width: 33%;
+  }
+
+
+
+  .home-guarantee-title {
+    font-size: 2.2em;
+  }
+
+  .home-lower-title {
+    font-size: 1.5em;
+  }
+
+  #home-landing-banner {
+    /*background: url('../images/landing-home/HOME_HEADER_TABLET.jpg') no-repeat center center !important;*/
+  }
+
+  .slider:not(.index) {
+    max-width: 500px !important;
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+/*    #home-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_TABLETSMALL.jpg') no-repeat center center !important;
+        -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }*/
+
+  #products-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_TABLETSMALL.jpg') no-repeat center center !important;
+        -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }
+
+  .slider:not(.index) {
+    max-width: 450px !important;
+  }
+  
+}
+
+/*@media screen and (max-width: 767px) {
+  #free-shipping-image, #free-imprint-image {
+    height: 45px !important;
+  }
+
+  #free-shipping-text, #free-imprint-text {
+    font-size: 1.3em !important;
+  }
+}*/
+
+@media screen and (max-width: 800px) and (min-width: 401px) {
+  .products.grid {
+    padding-left: 40px; 
+    padding-right: 40px;
+  }
+
+  .promotions.grid {
+    padding-left: 10px; 
+    padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #home-products-segment .grid .row .column {
+    max-width: 50%;
+  }
+
+  .get-quote-image {
+    height: 25px !important;
+  }
+
+  #middle-section-landing {
+    height: 25px !important;
+  }
+  .middle-aligned-landing-images {
+    height: 25px !important;
+  }
+  #middle-section-images {
+    margin-right: 0 !important;
+  }
+
+  #home-landing-banner {
+    /*background: url('../images/landing-home/HOME_HEADER_MOBILE.jpg') no-repeat center center !important;*/
+  }
+
+
+}
+@media screen and (max-width: 500px) {
+
+  #home-products-segment .grid .row .column {
+    max-width: 90% !important;
+    margin-right:auto !important;
+    margin-left: auto !important;
+  }
+
+  .home-guarantee-title {
+    font-size: 1.6em;
+    letter-spacing: 0px !important;
+  }
+  .home-lower-title {
+    font-size: 1.3em;
+  }
+
+  #free-shipping-text, #free-imprint-text {
+    font-size: 1em !important;
+  }
+
+  #free-shipping-image, #free-imprint-image {
+    height: 25px !important;
+  }
+
+  #products-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_PHONEBIG.jpg') no-repeat center center !important;
+    -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }
+
+/*  #home-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_PHONEBIG.jpg') no-repeat center center !important;
+    -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }*/
+
+  .slider:not(.index) {
+    max-width: 320px !important;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  .bottom-landing-quote-mobile-h3 {
+    font-size: 1.2em !important;
+  }
+  #get-quote-right {
+    padding-right: 35px !important;
+  }
+
+  .home-guarantee-title {
+    font-size: 1.4em;
+  }
+
+  .home-lower-title {
+    font-size: 1.2em;
+  }
+
+  #middle-section-landing {
+    height: 20px !important;
+  }
+  .middle-aligned-landing-images {
+    height: 20px !important;
+  }
+
+  #free-shipping-text, #free-imprint-text {
+    font-size: .9em !important;
+  }
+
+  #free-shipping-image, #free-imprint-image {
+    height: 23px !important;
+  }
+
+  #free-shipping-column-mobile {
+    padding-left: 0;
+  }
+
+  #free-imprint-column-mobile {
+    padding-right: 0;
+  }
+
+  #fixed-one-column-mobile {
+    padding:0;
+  }
+
+  .fixed-column-child {
+    padding: 3px !important;
+  }
+
+  .slider:not(.index) {
+    max-width: 250px !important;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #free-shipping-text, #free-imprint-text {
+    font-size: .7em !important;
+  }
+
+  #free-shipping-image, #free-imprint-image {
+    height: 18px !important;
+  }
+}
+
+/*END Home Products*/
+
+/*END Media Queries*/
+
+/* CUSTOM REMODAL CSS */
+
+@media only screen and (min-width: 641px) {
+.remodal {
+    max-width: 300px !important;
+}
+
+@media only screen and (min-width: 441px) {
+.remodal {
+    max-width: 300px !important;
+}
+
+/* END CUSTOM REMODAL CSS */

@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang='en-GB'>
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demand Promo</title>
+  <link rel="stylesheet" href="scripts/SemanticUI/semantic.min.css" />
+  <link rel="stylesheet" href="scripts/SweetAlert/sweetalert.css" />
+  <link rel="stylesheet" href="styles/semantic-custom.css" />
+  <link rel="stylesheet" href="styles/remodal.css" />
+  <link rel="stylesheet" href="styles/remodal-default-theme.css" />
+  <link rel="stylesheet" href="scripts/Slick/slick.css" />
+  <link rel="stylesheet" href="scripts/Slick/slick-theme.css" />
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.sync.bootstrap.min.js"></script>
+</head>
+<body>
+<div class="remodal" data-remodal-id="modal"
+  data-remodal-options="hashTracking: false, closeOnOutsideClick: false" style="background-color: #00ADDB;  box-shadow: 3px 3px 5px #888888;">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h1 class="gotham-light remodal-h1" style="color: snow !important;">FREE QUOTE WITHIN</h1>
+    <h1 class="gotham-light" style="color: snow !important;"> &#9679; 15 MINUTES &#9679;</h1>
+    <div class="ui grid">
+      <form class="ui form getquote segment" method="POST" action="sendMail.php" id="get-quote-form-modal" enctype="multipart/form-data" style="border: 0 !important; box-shadow: none !important; margin-right: auto; margin-left: auto !important;
+    display: block;">
+        <div class="field">
+          <input type="text" name="name" id="get-quote-name-modal"  placeholder="Name">
+        </div>
+        <div class="field">
+          <input type="text" name="email" id="get-quote-email-modal" placeholder="Email">
+        </div>
+        <div class="field">
+          <input type="text" name="quantity" id="get-quote-quantity-modal" placeholder="Quantity">
+        </div>
+        <div class="field">
+          <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
+            <option value="product"> Product </option>
+          </select>
+        </div>
+        <div class="field">
+           <input style="" id="get-quote-file-upload-modal" class="form-control"
+                    type="file" name="get-quote-file-upload-modal">
+        </div>
+          <button class="ui getquote button gotham-light" id="get-quote-modal">GET QUOTE</button>
+  <button class="ui primary loading button" id="get-quote-modal-loader" style="display: none;">Loading</button>
+      </form>
+    </div>
+  <br>
+
+</div>
+
+  <div id='navbar-container'></div>
+  <div id='screen-container' style="min-height:100%; overflow: auto;"></div>
+  <div id='footer-container' style="margin-top: -1rem;"></div>
+  <script id='template' type='text/html'>
+   <div id="home-landing-container"></div>
+   <div id="home-products-container"></div>
+   <div id="home-promotions-container"></div>
+   <div id="home-guarantee-container"></div>
+ </script>
+
+ <script id="get-quote-module" type="text/html">
+  <div class="ui grid">
+   <div class="computer only row">
+      <form class="ui form getquote segment" method="POST" id="get-quote-form" action="sendMail.php" enctype="multipart/form-data" style="margin-top: 50px; width: 320px; margin-left: 5%;  z-index: 101; box-shadow: 3px 3px 5px #888888;">
+        <h2 class="ui header getquote gotham-light" style="text-align: center;"> FREE QUOTE WITHIN </h2>
+        <div style="text-align: center; width: 100%;">
+          <h2 class="ui header getquote gotham-light" style="margin-bottom: 20px;"> &#9679; 15 MINUTES &#9679;</h2>
+        </div>
+        <div class="field">
+          <input type="text" name="name" placeholder="Name" id="get-quote-name">
+        </div>
+        <div class="field">
+          <input type="text" name="email" placeholder="Email" id="get-quote-email">
+        </div>
+        <div class="field">
+          <input type="text" name="quantity" placeholder="Quantity" id="get-quote-quantity">
+        </div>
+        <div class="field">
+          <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
+            <option value="product"> Product </option>
+          </select>
+        </div>
+        <div class="field">
+            <input style="" id="get-quote-file-upload" class="form-control"
+                        type="file" name="get-quote-file-upload">
+            <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+        </div>
+        <button class="ui getquote button gotham-light" id="get-quote-module" on-click="getQuoteInit">GET QUOTE</button>
+        <button class="ui primary loading button" id="get-quote-loader" style="display: none;">Loading</button>
+      </form>
+   </div>
+ </script>
+<!--  
+background: url('images/landing-home/HOME_HEADER.jpg') no-repeat center center; -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; -o-background-size: 100px 100%; background-size: 100% 400px; 
+ -->
+ <script id="home-landing-template" type="text/html">
+    <div class="ui vertical stripe segment" id="home-landing-segment" style="background-color: #F5F5F5; padding-bottom: 0;">
+        <div class="ui stackable grid" id="home-landing-banner" style="height: 400px;">
+            <div class="computer only row" style="padding: 0 !important;">
+              <div class="column" style="padding-right: 0 !important;">
+                <div class="slider lazy" style="margin-right: auto; margin-left: auto;">
+                  <div style="height: 400px; "> 
+                      <img style="height: 100%; width: 100%;" src="{{computerSlide1}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{computerSlide2}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{computerSlide3}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{computerSlide4}}"  />
+                  </div>
+                    <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{computerSlide5}}"  />
+                  </div>
+                </div>
+                <div class="get-quote-popup" style="max-width: 40%; top: 10px; position: absolute; left: 69%;"></div>
+              </div>
+            </div>
+            <div class="tablet only row" style="padding: 0 !important;">
+              <div class="column" style="padding-right: 0 !important;">
+                <div class="slider index lazy" style="margin-right: auto; margin-left: auto;">
+                  <div style="height: 400px; "> 
+                      <img style="height: 100%; width: 100%;" src="{{tabletSlide1}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{tabletSlide2}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{tabletSlide3}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{tabletSlide4}}"  />
+                  </div>
+                    <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{tabletSlide5}}"  />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile only row" style="padding: 0 !important;">
+              <div class="column" style="padding: 0 !important;">
+                <div class="slider index lazy" style="margin-right: auto; margin-left: auto;">
+                  <div style="height: 400px; "> 
+                      <img style="height: 100%; width: 100%;" src="{{mobileSlide1}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{mobileSlide2}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{mobileSlide3}}"  />
+                  </div>
+                  <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{mobileSlide4}}"  />
+                  </div>
+                    <div style="height: 400px;"> 
+                      <img style="height: 100%; width: 100%;" src="{{mobileSlide5}}"  />
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <!-- <div id="middle-section-landing" style="background-color: white; height: 50px; width: 100%;">
+        <div class="ui grid">
+          <div class="computer and tablet only row" style="padding: 0">
+            <div class="twelve wide right aligned column">
+              <div id="middle-section-images" style=" float: right; margin-right: 10%;">
+                <div style="height: 50px; display: inline; float: left; clear: none;"> 
+                  <img class="get-quote-image"src="images/landing-home/TRUSTPILOT.png" style="height: 50px;" />
+                </div>
+                <div style="height: 50px; display: inline; float:left; clear: none;"> 
+                  <img class="get-quote-image"src="images/landing-home/5STAR.png"style="height: 50px; display: inline-block;" />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="four wide column">
+
+            </div>
+          </div>
+          <div class="mobile only row" style="padding: 0">
+            <div class="middle aligned column" style=" display: inline-block; width: auto !important; margin-left: auto; margin-right: auto;">
+              <div class="middle-aligned-landing-images" style="height: 35px; display: inline; float: left; clear: none; margin-right: auto;"> 
+                <img class="" src="images/landing-home/TRUSTPILOT.png" style="height: 100%;" />
+              </div>
+              <div class="middle-aligned-landing-images" style="height: 35px; display: inline; float:left; clear: none;"> 
+                <img class=""src="images/landing-home/5STAR.png"style="height: 100%; display: inline-block;" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+      </div> -->
+      <div class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2df20000ff000584c750" data-style-height="500px" data-style-width="100%" data-stars="1,2,3,4,5">
+    <a href="https://www.trustpilot.com/review/axizgroup.com" target="_blank">Trustpilot</a>
+</div>
+      <!-- {{#if isMobile}}
+        <div id="mobile-only-bottom-landing" style="background-color: #EE7421; height:auto; width: 100%; overflow: auto; clear: both;">
+          <div class="ui grid" style=" margin: 0rem !important;">
+            <div class="one column row">
+              <div class="column" style="text-align: center;">
+                <h3 class="bottom-landing-quote-mobile-h3 gotham-light" style="color: snow; font-size: 1.5em;">"Lorem ipsum dolor sit amet, consectetur adispiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequet."</h3>
+                <div style="height: 80px; ">
+                  <img src="images/landing-home/CIRCLE_GIRL.png" style="height: 65px; width: 65px; display: inline-block;"/>
+                  </div>
+                  <div style="height: 80px;">
+                  <h2 style="color: snow; padding-bottom: 10px; display: inline-block; margin-top: -20px;">Jane Doe</h2>
+                </div>
+
+              </div>
+              <div class="one wide column">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      {{else}}
+        <div id="computer-only-bottom-landing" style="background-color: #EE7421; min-height: 250px; height: auto !important; overflow: auto; clear: both; width: 100%;">
+          <div class="ui grid" style=" margin: 0rem !important;">
+          <div class="row">
+            <div class="two wide column">
+              
+            </div>
+            <div class="fourteen wide middle aligned column">
+              <div style="display: inline-block; float: left;">
+                <img src="images/landing-home/CIRCLE_GIRL.png" style="height: 220px; width: 220px;"/>
+              </div>
+              <div class="bottom-landing-quote" style="max-width: 40%; height: 200px; max-height: 200px;display: inline-block; float: left; text-align: center; margin-top: 10px; margin-left: 20px;">
+                <h3 class="bottom-landing-quote-h3 gotham-light" style="color: snow;">"Lorem ipsum dolor sit amet, consectetur adispiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequet."</h3>
+                <h2 class="bottom-landing-quote-h2 gotham-light" style="color: snow;">- Jane doe</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      {{/if}} -->
+    </div>
+ </script>
+<!--  -->
+ <script id="home-products-template" type="text/html">
+    <div class="ui vertical stripe segment" id="home-products-segment" style="background: url('images/SHADOW_UP.png') no-repeat center center; background-size: cover;">
+        <div class="ui products stackable grid"style="padding-bottom: 50px;">
+        
+
+          <div class="four column row">
+            <div class="products column">
+              <div class="products item">
+                <div class="image">
+                  <img src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                </div>
+                <div class="content">
+                  <a class="products header gotham-light">Powerbanks</a>
+                </div>
+              </div>
+            </div>
+            <div class="products column">
+              <div class="products item">
+                <div class="image">
+                  <img src="images/products-home/travel_kits.png" style="width: 100%; height: 100%;">
+                </div>
+                <div class="content">
+                  <a class="products header gotham-light">Travel Kits</a>
+                </div>
+              </div>
+            </div>
+            <div class="products column">
+              <div class="products item">
+                <div class="image">
+                  <img src="images/products-home/selfie_sticks.png" style="width: 100%; height: 100%;">
+                </div>
+                <div class="content">
+                  <a class="products header gotham-light">Selfie Sticks</a>
+                </div>
+              </div>
+            </div>
+            <div class="products column">
+              <div class="products item">
+                <div class="image">
+                  <img src="images/products-home/speakers.png" style="width: 100%; height: 100%;">
+                </div>
+                <div class="content">
+                  <a class="products header gotham-light">Speakers</a>
+                </div>
+              </div>
+            </div>
+            <div class="products column">
+              <div class="products item">
+                <div class="image">
+                  <img src="images/products-home/usb_drives.png" style="width: 100%; height: 100%;">
+                </div>
+                <div class="content">
+                  <a class="products header gotham-light">USB Drives</a>
+                </div>
+              </div>
+            </div>
+            <div class="products column">
+              <div class="products item">
+                <div class="image">
+                  <img src="images/products-home/cases.png" style="width: 100%; height: 100%;">
+                </div>
+                <div class="content">
+                  <a class="products header gotham-light">Cases</a>
+                </div>
+              </div>
+            </div>
+            <div class="products column">
+              <div class="products item">
+                <div class="image">
+                  <img src="images/products-home/accessories.png" style="width: 100%; height: 100%;">
+                </div>
+                <div class="content">
+                  <a class="products header gotham-light">Accessories</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+ </script>
+
+ <script id="home-promotions-template" type="text/html">
+  <div class="ui vertical stripe segment" id="home-promotions-segment" style="background-color: #00ADDB">
+    <div class="ui promotions stackable divided grid"style="padding-bottom: 50px;">
+      <div class="three column row">
+        <div class="promotions column">
+          <div class="promotions item" style="padding-top: 30px;">
+            <h1 class="promotions-header gotham-light" style="font-size: 3.5em; letter-spacing: 5px;"> SELECT </h1>
+            <div class="image">
+              <img src="images/promotions-home/INFOGRAPH_1.png" class="promotions-image" style="width: 100%; height: 100%;">
+            </div>
+            <div class="content">
+              <a class="promotions header">
+              <div class="promotions-header-styling-150 gotham-light" style=" letter-spacing: 2px;margin-right: auto; margin-left: auto">
+                Select the perfect promotional item
+              </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="promotions column">
+          <div class="promotions item" style="padding-top: 30px;">
+            <h1 class="promotions-header gotham-light" style="font-size: 3.5em; letter-spacing: 5px;"> BRAND </h1>
+            <div class="image">
+              <img src="images/promotions-home/INFOGRAPH_2.png" class="promotions-image" style="width: 100%; height: 100%;">
+            </div>
+            <div class="content">
+              <a class="promotions header">
+                <div class="promotions-header-styling-200 gotham-light" style=" letter-spacing: 2px; margin-right: auto; margin-left: auto">
+                Pick your color and send us your logo. We will do the rest!
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="promotions column">
+          <div class="promotions item" style="padding-top: 30px;">
+            <h1 class="promotions-header gotham-light" style="font-size: 3.5em; letter-spacing: 5px;"> PROMOTE </h1>
+            <div class="image">
+              <img src="images/promotions-home/INFOGRAPH_3.png" class="promotions-image" style="width: 100%; height: 100%;">
+            </div>
+            <div class="content">
+              <a class="promotions header">
+                <div class="promotions-header-styling-200 gotham-light" style=" letter-spacing: 2px;margin-right: auto; margin-left: auto">
+                  Share your item with the world
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </script>
+
+ <script id="home-guarantee-template" type="text/html">
+  <div class="ui vertical stripe segment" id="home-guarantee-segment" style="background: url('images/SHADOW_DOWN.png') no-repeat center center; background-size: cover; min-height: 500px;">
+      <div class="ui basic grid" style="padding: 50px;">
+        <div class="one column row" style="">
+          <div class="column" style="text-align: center;">
+            <h1 class="home-guarantee-title gotham-light" style="letter-spacing: 3px;"> &#9679; OUR GUARANTEE &#9679;</h1>
+            <h2 class="home-lower-title gotham-light"> DemandPromo prides itself on its customer service and ordering process, but that is not enough, we need to make sure the productsyou are receiving is exactly what you want and are expecting. Because of this we have dedicated team members in each of our factories who perform quality control tests making sure each product is perfect. We are so confident that have a 100% Customer Satisfaction Guarnatee on all of our products. </h2>
+          </div>
+        </div>
+      </div>
+  </div>
+ </script>
+<script id="navbar-template" type="text/html">
+   <div class="ui inverted menu grid" style="border-radius: 0rem !important;">
+     <div class="mobile only row"style="width: 100%;">
+      <div id="mobile-container"></div>
+    </div>
+
+    <div class="computer and tablet only row" style="width: 100%; padding: 0 !important; height: 75px;">
+      <div id="computer-tablet-container"></div>
+    </div>
+</script>
+<script id="footer-template" type="text/html">
+ <div class="ui inverted vertical footer segment " style="background-color: #cccccc; min-height: 250px;">
+   <div class="ui grid">
+      <div class="computer and tablet only row" style="height: 100%;">
+        <div class="three wide column" >
+              <div style="padding-top: 15px;">
+                <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Contact </span><br/>
+              </div>
+              <div style="padding-top: 15px;">
+                <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> About Us </span><br/>
+              </div>
+              <div style="padding-top: 15px;">
+                <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Terms & Conditions </span><br/>
+              </div>
+              <div style="padding-top: 15px;">
+                <span class="home-footer-label-text gotham-light"style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Your Privacy </span><br/>
+              </div>
+        </div>
+        <div class="three wide column" >
+            <div style="padding-top: 15px;">
+              <span class="gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Products </span><br/>
+            </div>
+        </div>
+        <div class="five wide column" >
+            <div class="ui stackable grid">
+              <div class="row">
+                <div class="middle aligned column" style="">
+                    <div style="padding: 15px; display: inline-block;">
+                      <img src="images/footer-home/VISA.png" style="height: 45px;" />
+                    </div>
+                    <div style="padding: 15px; display: inline-block;">
+                      <img src="images/footer-home/MASTERCARD.png"  style="height: 45px;"  />
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                    <div style="padding: 15px; display: inline-block;">
+                        <img src="images/footer-home/PAYPAL.png"  style="height: 45px;" />
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="five wide column" >
+          <div class="row">
+            <div class="column">
+                <div style="padding: 15px; display: inline-block;">
+                  <img src="images/footer-home/IG.png" style="height: 45px;" />
+                </div>
+                <div style="padding: 15px; display: inline-block;">
+                  <img src="images/footer-home/TWITTER.png"  style="height: 45px;"  />
+                </div>
+                <div style="padding: 15px; display: inline-block;">
+                  <img src="images/footer-home/FACEBOOK.png"  style="height: 45px;"  />
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mobile only three column row" style="height: 100%;">
+        <div class="column" >
+          <div style="padding-top: 15px;">
+              <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px"> Contact </span><br/>
+          </div>
+          <div style="padding-top: 15px;">
+              <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> About </span><br/>
+          </div>
+          <div style="padding-top: 15px;">
+              <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> T&C </span><br/>
+          </div>
+          <div style="padding-top: 15px;">
+              <span class="home-footer-label-text gotham-light"style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> Privacy </span><br/>
+          </div>
+          <div style="padding-top: 15px;">
+              <span class="gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> Products </span><br/>
+          </div>
+        </div>
+<!--         <div class="column" >
+          <span class="gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px;"> Products </span><br/>
+        </div> -->
+        <div class="column" >
+            <div class="ui stackable grid">
+              <div class="two column row">
+                <div class="column">
+                  <img src="images/footer-home/VISA.png" style="height: 35px;" />
+                </div>
+                <div class="column">
+                  <img src="images/footer-home/MASTERCARD.png"  style="height: 35px;"  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                  <img src="images/footer-home/PAYPAL.png"  style="height: 35px;" />
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="column" >
+        <div class="ui stackable grid">
+          <div class="three column row">
+            <div class="column">
+              <img src="images/footer-home/IG.png" style="height: 35px;" />
+            </div>
+            <div class="column">
+                <img src="images/footer-home/TWITTER.png"  style="height: 35px;"  />
+            </div>
+            <div class="column">
+                <img src="images/footer-home/FACEBOOK.png"  style="height: 35px;"  />
+            </div>
+        </div>
+      </div>
+      </div>
+      
+   </div>
+   <div class="row">
+        <div class="column" style="text-align: center; margin-top: 10%;">
+        <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); font-size: 1.6em;"> &copy; 2016 | Web Development by <a target="__blank" href="http://www.jdmdev.net" style="color: rgba(27, 28, 29, 0.39); text-decoration: none;">www.jdmdev.net</a></span>
+        </div>
+      </div>
+ </div>
+</script>
+<script id="mobile-template" type="text/html">
+  <div class="ui basic grid">
+   <div class="row">
+     <div class="ten wide middle left aligned column">
+       <div id="mobile-image-left" style="display: inline-block;">
+        <a href="index.html"><img src="images/logo_test.png" style="width: 100px; height: 50px;" /></a>
+       </div>
+       <div class="ui dropdown link borderless item" style="display: inline-block; margin-top: -40px;">
+          <i class="large sidebar icon"></i>
+          <div class="menu">
+            <div class="item">
+              Products
+            </div>
+            <div class="item">
+              About
+            </div>
+            <div class="item">
+              Contact
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="six wide right aligned column">
+      <div id="get-quote-right">
+        <button class="ui orange mini button" style="height: 50px; width: auto;" data-remodal-target="modal" href="#">GET QUOTE</button>
+     </div>
+   </div>
+ </div>
+</script>
+
+<script id="computer-tablet-template" type="text/html">
+  <div class="ui basic grid">
+   <div class="row" style="padding: 0 !important;">
+     <div class="two wide left aligned column" style=" padding-left: 30px;">
+       <a href="index.html"><img src="images/logo_test.png" style="min-width: 105px; height: 75px; margin-top: 15px;" /></a>
+     </div>
+
+     <div class="eleven wide middle aligned column" style="height: 100%;">
+       <div class="ui white four borderless item menu" style="padding: 0 !important; height: 85px; min-height: 100%;">
+        <a id="borderless-item-products" class="borderless item active gotham-default" href="products.html">
+          Products
+          
+        </a>
+        <a id="borderless-item-about" class="borderless item gotham-default">
+          About
+        </a>
+        <a id="borderless-item-contact" class="borderless item gotham-default">
+          Contact
+        </a>
+        <span class="borderless item gotham-default">
+          <i class="call icon"></i> (855) 392-9301
+        </span>
+      </div>
+     </div>
+
+     <div class="three wide right aligned column">
+       <div style="padding-right: 20px;">
+        <button class="ui orange small button gotham-light" style="height: 40px;margin-top: 30px;width: 100%;" data-remodal-target="modal" href="#">GET QUOTE</button>
+       </div>
+     </div>
+   </div>
+ </div>
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+<script src='scripts/SemanticUI/semantic.min.js'></script>
+<script src='scripts/remodal.js'></script>
+<script src='scripts/SweetAlert/sweetalert.min.js'></script>
+<script src='scripts/numeric.js'></script>
+<script src='scripts/Slick/slick.min.js'></script>
+<script>
+$(document).ready(function() {
+  //see if this was coming back from a post request
+  var query = getQueryParams(document.location.search);
+  if(query.success !== undefined) {
+    if(query.success) {
+      swal("", "We'll be in contact soon, thanks!", "success");
+      
+    } else {
+      swal("", query.message, "error");
+    }
+  }
+
+  $('#get-quote-quantity').numeric({decimal: false, negative: false});
+  $('#get-quote-quantity-modal').numeric({decimal: false, negative: false});
+  $('#get-quote-form').submit(function (e) {
+       if($('#get-quote-quantity').val().length == 0 || $('#get-quote-name').val().length == 0 || $('#get-quote-email').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+            e.preventDefault();
+       }
+  });
+
+  $('#get-quote-form-modal').submit(function (e) {
+       if($('#get-quote-quantity-modal').val().length == 0 || $('#get-quote-name-modal').val().length == 0 || $('#get-quote-email-modal').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+            e.preventDefault();
+       }
+  });
+
+    $('.lazy').slick({
+    infinite: true,
+    lazyLoad: 'ondemand',
+    autoplay: true,
+    appendArrows: false,
+    autoplaySpeed: 1500
+  });
+            
+});
+
+function getQueryParams(qs) {
+    qs = qs.split('+').join(' ');
+
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
+
+ var rxMain = new Ractive({
+   // The `el` option can be a node, an ID, or a CSS selector.
+   el: '#screen-container',
+   template: '#template',
+   data: { 
+     name: 'world',
+     products: [
+
+     ]
+   }
+ });
+
+ var rxNavbar = new Ractive({
+   el:'#navbar-container',
+   template: '#navbar-template',
+   data: {
+   }
+ });
+
+ var rxFooter = new Ractive({
+   el:'#footer-container',
+   template: '#footer-template',
+   data: {
+   }
+ });
+
+ var rxMobileNav = new Ractive({
+   el:'#mobile-container',
+   template: '#mobile-template',
+   data: {
+   },
+   onrender: function() {
+    $('.dropdown')
+    .dropdown({
+        // you can use any ui transition
+        transition: 'drop'
+      })
+    ;
+    this.on({
+      getQuoteModal: function() {
+        $('.ui.modal')
+          .modal('show')
+        ;
+      }
+    });
+  }
+});
+
+var rxLandingProducts = new Ractive({
+   el:'#home-landing-container',
+   template: '#home-landing-template',
+   data: {
+      isMobile: false,
+      computerSlide1: 'images/landing-home/HOME_HEADER.jpg',
+      computerSlide2: 'images/landing-home/HOME_HEADER.jpg',
+      computerSlide3: 'images/landing-home/HOME_HEADER.jpg',
+      computerSlide4: 'images/landing-home/HOME_HEADER.jpg',
+      computerSlide5: 'images/landing-home/HOME_HEADER.jpg',
+      tabletSlide1: 'images/landing-home/HOME_HEADER_TABLET.jpg',
+      tabletSlide2: 'images/landing-home/HOME_HEADER_TABLET.jpg',
+      tabletSlide3: 'images/landing-home/HOME_HEADER_TABLET.jpg',
+      tabletSlide4: 'images/landing-home/HOME_HEADER_TABLET.jpg',
+      tabletSlide5: 'images/landing-home/HOME_HEADER_TABLET.jpg',
+      mobileSlide1: 'images/landing-home/HOME_HEADER_MOBILE.jpg',
+      mobileSlide2: 'images/landing-home/HOME_HEADER_MOBILE.jpg',
+      mobileSlide3: 'images/landing-home/HOME_HEADER_MOBILE.jpg',
+      mobileSlide4: 'images/landing-home/HOME_HEADER_MOBILE.jpg',
+      mobileSlide5: 'images/landing-home/HOME_HEADER_MOBILE.jpg',
+   }
+ });
+
+var rxHomeProducts = new Ractive({
+   el:'#home-products-container',
+   template: '#home-products-template',
+   data: {
+   },
+   onrender: function() {
+
+   }
+ });
+
+var rxHomePromotions= new Ractive({
+   el:'#home-promotions-container',
+   template: '#home-promotions-template',
+   data: {
+   }
+ });
+
+var rxGuarantee= new Ractive({
+   el:'#home-guarantee-container',
+   template: '#home-guarantee-template',
+   data: {
+   }
+ });
+
+ var rxDesktopNav = new Ractive({
+   el:'#computer-tablet-container',
+   template: '#computer-tablet-template',
+   data: {
+   },
+   onrender: function() {
+      this.on({
+        getQuoteModal: function() {
+          $('.ui.modal')
+            .modal('show')
+          ;
+        }
+      })
+   }
+ });
+
+  var rxGetQuote = new Ractive({
+   el:'.get-quote-popup',
+   template: '#get-quote-module',
+   data: {
+    file: null,
+    getQuoteProductSelect: 'product'
+   },
+   onrender: function() {
+    $('#get-quote-file-upload').on('change', function(event) {
+      console.log(event);
+      var file = event.target.files[0];
+      rxGetQuote.set('file', file);
+       //TODO do something with fileList.  
+    });
+
+    this.on({
+      fileUpload: function() {
+      },
+      getQuoteInit: function() {
+
+
+
+      
+        
+      },
+      getQuoteModalInit: function() {
+        
+      }
+    });
+   }
+ });
+  //slows down application, although this works
+  rxLandingProducts.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
+  var prev = 'notset';
+
+  $('#get-quote-file-upload-modal').on('change', function(event) {
+    console.log(event);
+    var file = event.target.files[0];
+    rxGetQuote.set('file', file);
+     //TODO do something with fileList.  
+  });
+  setInterval(function() {
+    if(prev == 'notset')
+      prev = ($('.mobile.only.row').css('display') != "none");
+
+    if(($('.mobile.only.row').css('display') != "none") != prev) {
+      rxLandingProducts.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
+      prev = ($('.mobile.only.row').css('display') != "none");
+    }
+  }, 0);
+</script>
+
+</body>
+</html>
+
+<!-- /*<div class="ui grid">
+      <div class="four column row" style="height: 100%;">
+        <div class="column" >
+          <span class="home-footer-label-text" style="color: rgba(27, 28, 29, 0.39); padding: 10px;"> Contact </span><br/>
+          <span class="home-footer-label-text" style="color: rgba(27, 28, 29, 0.39); padding: 10px;"> About Us </span><br/>
+          <span class="home-footer-label-text" style="color: rgba(27, 28, 29, 0.39); padding: 10px;"> Terms & Conditions </span><br/>
+          <span class="home-footer-label-text"style="color: rgba(27, 28, 29, 0.39); padding: 10px;"> Your Privacy </span><br/>
+        </div>
+        <div class="column" >
+          <span style="color: rgba(27, 28, 29, 0.39); padding: 10px;"> Products </span><br/>
+        </div>
+        <div class="column" >
+            <div class="ui stackable grid">
+              <div class="two column row">
+                <div class="column">
+                  <img src="images/footer-home/VISA.png" />
+                </div>
+                <div class="column">
+                  <img src="images/footer-home/MASTERCARD.png"   />
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                  <img src="images/footer-home/PAYPAL.png"  />
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="column" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="column" style="text-align: center; margin-top: 10%;">
+        <span class="home-footer-label-text" style="color: rgba(27, 28, 29, 0.39);"> &copy; 2016 </span>
+        </div>
+      </div>
+   </div>*/ -->
