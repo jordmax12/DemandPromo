@@ -18,6 +18,22 @@
     src: url(../fonts/Gotham-Black.otf);
   }
 
+  .products-header {
+    font-size: 1.3em;
+  }
+
+  .about-header {
+    font-size: 1.3em;
+  }
+
+  .contact-header {
+    font-size: 1.3em;
+  }
+
+  .phone-header {
+    font-size: 1.3em;
+  }
+
  .gotham-bold {
       font-family: GothamBold !important;
   }
@@ -211,6 +227,10 @@
     height: 25px;
     width: 25px;
   }
+
+  body, button, span.date_label, .timeline_items li h3 span, input[type="submit"], input[type="reset"], input[type="button"], input[type="text"], input[type="password"], input[type="tel"], input[type="email"], textarea, select {
+    font-family: GothamLight !important;
+  }
 /*MEDIA QUERIES*/
 
 /*Home Products*/
@@ -238,11 +258,15 @@
   }
 
   .home-guarantee-title {
-    font-size: 3em;
+    font-size: 2em;
   }
 
   .home-lower-title {
     font-size: 2em;
+  }
+
+  .about-lower-title {
+    font-size: 1em;
   }
 
   .ui.menu.four.item .item {
@@ -290,6 +314,14 @@
     -o-background-size: 100px 100%; 
     background-size: 100% 400px; 
   }
+
+  #about-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_TABLETBIG.jpg') no-repeat center center !important;
+        -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }
 }
 
 @media screen and (max-width: 950px) {
@@ -308,6 +340,22 @@
   #free-shipping-text, #free-imprint-text {
     font-size: 1.7em !important;
   }*/
+
+  .products-header {
+    font-size: 1em;
+  }
+
+  .about-header {
+    font-size: 1em;
+  }
+
+  .contact-header {
+    font-size: 1em;
+  }
+
+  .phone-header {
+    font-size: 1em;
+  }
 
 }
 
@@ -329,11 +377,15 @@
 
 
   .home-guarantee-title {
-    font-size: 2.2em;
+    font-size: 1.7em;
   }
 
   .home-lower-title {
-    font-size: 1.5em;
+    font-size: 2em;
+  }
+
+  .about-lower-title {
+    font-size: 1em;
   }
 
   #home-landing-banner {
@@ -356,6 +408,14 @@
   }*/
 
   #products-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_TABLETSMALL.jpg') no-repeat center center !important;
+        -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }
+
+  #about-landing-banner {
     background: url('../images/main-products/HOME_HEADER_TABLETSMALL.jpg') no-repeat center center !important;
         -webkit-background-size: 100% 100%; 
     -moz-background-size: 100% 100%; 
@@ -414,6 +474,10 @@
     /*background: url('../images/landing-home/HOME_HEADER_MOBILE.jpg') no-repeat center center !important;*/
   }
 
+  .faq-lower-title {
+    font-size: 1em;
+  }
+
 
 }
 @media screen and (max-width: 500px) {
@@ -427,9 +491,13 @@
   .home-guarantee-title {
     font-size: 1.6em;
     letter-spacing: 0px !important;
-  }
+  }   
   .home-lower-title {
-    font-size: 1.3em;
+    font-size: 1.5em;
+  }
+
+  .about-lower-title {
+    font-size: 1em;
   }
 
   #free-shipping-text, #free-imprint-text {
@@ -441,6 +509,14 @@
   }
 
   #products-landing-banner {
+    background: url('../images/main-products/HOME_HEADER_PHONEBIG.jpg') no-repeat center center !important;
+    -webkit-background-size: 100% 100%; 
+    -moz-background-size: 100% 100%; 
+    -o-background-size: 100px 100%; 
+    background-size: 100% 400px; 
+  }
+
+  #about-landing-banner {
     background: url('../images/main-products/HOME_HEADER_PHONEBIG.jpg') no-repeat center center !important;
     -webkit-background-size: 100% 100%; 
     -moz-background-size: 100% 100%; 
@@ -477,6 +553,10 @@
 
   .home-lower-title {
     font-size: 1.2em;
+  }
+
+  .about-lower-title {
+    font-size: 1em;
   }
 
   #middle-section-landing {

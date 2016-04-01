@@ -91,7 +91,7 @@
 
  <script id="products-landing-template" type="text/html">
     <div class="ui vertical stripe segment" id="home-landing-segment" style="background-color: #F5F5F5; padding-bottom: 0; width: 100%;">
-        <div class="ui stackable grid" id="products-landing-banner" style="padding-bottom: 50px; height: 400px; background: url('images/main-products/PRODUCTS_HEADER.jpg') no-repeat center center; -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; -o-background-size: 100px 100%; background-size: 100% 400px; ">
+        <div class="ui stackable grid" id="products-landing-banner" style="padding-bottom: 50px; height: 400px; background: url({{headerUrl}}) no-repeat center center; -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; -o-background-size: 100px 100%; background-size: 100% 400px; ">
           <div class="three column row" >
             <div class="column">
               
@@ -103,41 +103,7 @@
               <!-- <div class="get-quote-popup" style=""></div> -->
             </div>
           </div>
-      </div>
-      <!-- <div id="middle-section-landing" style="background-color: white; height: 50px; width: 100%;">
-        <div class="ui grid">
-          <div class="computer and tablet only row" style="padding: 0">
-            <div class="twelve wide right aligned column">
-              <div id="middle-section-images" style=" float: right; margin-right: 10%;">
-                <div style="height: 50px; display: inline; float: left; clear: none;"> 
-                  <img class="get-quote-image"src="images/landing-home/TRUSTPILOT.png" style="height: 50px;" />
-                </div>
-                <div style="height: 50px; display: inline; float:left; clear: none;"> 
-                  <img class="get-quote-image"src="images/landing-home/5STAR.png"style="height: 50px; display: inline-block;" />
-                </div>
-              </div>
-
-            </div>
-
-            <div class="four wide column">
-
-            </div>
-          </div>
-          <div class="mobile only row" style="padding: 0">
-            <div class="middle aligned column" style=" display: inline-block; width: auto !important; margin-left: auto; margin-right: auto;">
-              <div class="middle-aligned-landing-images" style="height: 35px; display: inline; float: left; clear: none; margin-right: auto;"> 
-                <img class="" src="images/landing-home/TRUSTPILOT.png" style="height: 100%;" />
-              </div>
-              <div class="middle-aligned-landing-images" style="height: 35px; display: inline; float:left; clear: none;"> 
-                <img class=""src="images/landing-home/5STAR.png"style="height: 100%; display: inline-block;" />
-              </div>
-            </div>
-          </div>
-
-        </div>
-        
-      </div> -->
-      
+      </div>      
     </div>
  </script>
  <script id="products-main-template" type="text/html">
@@ -197,60 +163,84 @@
                     <div class="products column">
                       <div class="products item">
                         <div class="image">
-                          <img class="products-image" src="images/products-home/powerbanks.png">
+                          <a href="products/powerbanks.html">
+                            <img class="products-image" src="images/products-home/powerbanks.png">
+                          </a>
                         </div>
                         <div class="content">
-                          <a class="products header gotham-light">Powerbanks</a>
+                          <a href="products/powerbanks.html" class="products header gotham-light">Powerbanks</a>
                         </div>
                       </div>
                     </div>
                     <div class="products column">
                       <div class="products item">
                         <div class="image">
-                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                          <a href="products/travelkits.html">
+                            <img class="products-image" src="images/products-home/travel_kits.png" style="width: 100%; height: 100%;">
+                          </a>
                         </div>
                         <div class="content">
-                          <a class="products header gotham-light">Powerbanks</a>
+                          <a href="products/travelkits.html" class="products header gotham-light">Travel Kits</a>
                         </div>
                       </div>
                     </div>
                     <div class="products column">
                       <div class="products item">
                         <div class="image">
-                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                          <a href="products/selfiesticks.html">
+                            <img class="products-image" src="images/products-home/selfie_sticks.png" style="width: 100%; height: 100%;">
+                          </a>
                         </div>
                         <div class="content">
-                          <a class="products header gotham-light">Powerbanks</a>
+                          <a href="products/selfiesticks.html" class="products header gotham-light">Selfie Sticks</a>
                         </div>
                       </div>
                     </div>
                     <div class="products column">
                       <div class="products item">
                         <div class="image">
-                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                          <a href="products/speakers.html">
+                            <img class="products-image" src="images/products-home/speakers.png" style="width: 100%; height: 100%;">
+                          </a>
                         </div>
                         <div class="content">
-                          <a class="products header gotham-light">Powerbanks</a>
+                          <a href="products/speakers.html" class="products header gotham-light">Speakers</a>
                         </div>
                       </div>
                     </div>
                     <div class="products column">
                       <div class="products item">
                         <div class="image">
-                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                          <a href="products/usbdrives.html">
+                            <img class="products-image" src="images/products-home/usb_drives.png" style="width: 100%; height: 100%;">
+                          </a>
                         </div>
                         <div class="content">
-                          <a class="products header gotham-light">Powerbanks</a>
+                          <a href="products/usbdrives.html" class="products header gotham-light">USB Drives</a>
                         </div>
                       </div>
                     </div>
                     <div class="products column">
                       <div class="products item">
                         <div class="image">
-                          <img class="products-image" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                          <a href="products/cases.html">
+                            <img class="products-image" src="images/products-home/cases.png" style="width: 100%; height: 100%;">
+                          </a>
                         </div>
                         <div class="content">
-                          <a class="products header gotham-light">Powerbanks</a>
+                          <a href="products/cases.html" class="products header gotham-light">Cases</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="products column">
+                      <div class="products item">
+                        <div class="image">
+                          <a href="products/accessories.html">
+                            <img class="products-image" src="images/products-home/accessories.png" style="width: 100%; height: 100%;">
+                          </a>
+                        </div>
+                        <div class="content">
+                          <a href="products/accessories.html" class="products header gotham-light">Accessories</a>
                         </div>
                       </div>
                     </div>
@@ -259,8 +249,8 @@
             </div>
           <div class="six wide column">
               <div style="max-width: 350px !important;" class="get-quote-popup"></div>
-              <div style="max-width: 350px !important;" class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2df20000ff000584c750" data-style-height="450px" data-style-width="100%" data-stars="1,2,3,4,5">
-<a href="https://www.trustpilot.com/review/axizgroup.com" target="_blank">Trustpilot</a>
+              <div style="max-width: 350px !important;" class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2e160000ff000584c752" data-style-height="450px" data-style-width="100%" data-stars="1,2,3,4,5">
+  <a href="https://www.trustpilot.com/review/demandpromo.com" target="_blank">Trustpilot</a>
 </div>
           </div>
           <div class="sixteen wide column" style="padding-top: 15px;">
@@ -330,60 +320,84 @@
                   <div class="products column">
                     <div class="products item">
                       <div class="image">
-                        <img class="products-image-mobile" src="images/products-home/powerbanks.png">
+                        <a href="products/powerbanks.html">
+                          <img class="products-image-mobile" src="images/products-home/powerbanks.png">
+                        </a>
                       </div>
                       <div class="content">
-                        <a class="products header gotham-light">Powerbanks</a>
+                        <a href="products/powerbanks.html" class="products header gotham-light">Powerbanks</a>
                       </div>
                     </div>
                   </div>
                   <div class="products column">
                     <div class="products item">
                       <div class="image">
-                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        <a href="products/travelkits.html">
+                          <img class="products-image-mobile" src="images/products-home/travel_kits.png" style="width: 100%; height: 100%;">
+                        </a>
                       </div>
                       <div class="content">
-                        <a class="products header gotham-light">Powerbanks</a>
+                        <a href="products/travelkits.html" class="products header gotham-light">Travel Kits</a>
                       </div>
                     </div>
                   </div>
                   <div class="products column">
                     <div class="products item">
                       <div class="image">
-                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        <a href="products/selfiesticks.html">
+                          <img class="products-image-mobile" src="images/products-home/selfie_sticks.png" style="width: 100%; height: 100%;">
+                        </a>
                       </div>
                       <div class="content">
-                        <a class="products header gotham-light">Powerbanks</a>
+                        <a href="products/selfiesticks.html" class="products header gotham-light">Selfie Sticks</a>
                       </div>
                     </div>
                   </div>
                   <div class="products column">
                     <div class="products item">
                       <div class="image">
-                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        <a href="products/speakers.html">
+                          <img class="products-image-mobile" src="images/products-home/speakers.png" style="width: 100%; height: 100%;">
+                        </a>
                       </div>
                       <div class="content">
-                        <a class="products header gotham-light">Powerbanks</a>
+                        <a href="products/speakers.html" class="products header gotham-light">Speakers</a>
                       </div>
                     </div>
                   </div>
                   <div class="products column">
                     <div class="products item">
                       <div class="image">
-                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        <a href="products/usbdrives.html">
+                          <img class="products-image-mobile" src="images/products-home/usb_drives.png" style="width: 100%; height: 100%;">
+                        </a>
                       </div>
                       <div class="content">
-                        <a class="products header gotham-light">Powerbanks</a>
+                        <a href="products/usbdrives.html" class="products header gotham-light">USB Drives</a>
                       </div>
                     </div>
                   </div>
                   <div class="products column">
                     <div class="products item">
                       <div class="image">
-                        <img class="products-image-mobile" src="images/products-home/powerbanks.png" style="width: 100%; height: 100%;">
+                        <a href="products/cases.html">
+                          <img class="products-image-mobile" src="images/products-home/cases.png" style="width: 100%; height: 100%;">
+                        </a>
                       </div>
                       <div class="content">
-                        <a class="products header gotham-light">Powerbanks</a>
+                        <a href="products/cases.html" class="products header gotham-light">Cases</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="products column">
+                    <div class="products item">
+                      <div class="image">
+                        <a href="products/accessories.html">
+                          <img class="products-image-mobile" src="images/products-home/accessories.png" style="width: 100%; height: 100%;">
+                        </a>
+                      </div>
+                      <div class="content">
+                        <a href="products/accessories.html" class="products header gotham-light">Accessories</a>
                       </div>
                     </div>
                   </div>
@@ -391,68 +405,9 @@
               </div>
           </div>
           <div class="six wide column">
-            <div class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2df20000ff000584c750" data-style-height="423px" data-style-width="100%" data-stars="1,2,3,4,5">
-                <a href="https://www.trustpilot.com/review/axizgroup.com" target="_blank">Trustpilot</a>
+            <div class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2e160000ff000584c752" data-style-height="423px" data-style-width="100%" data-stars="1,2,3,4,5">
+  <a href="https://www.trustpilot.com/review/demandpromo.com" target="_blank">Trustpilot</a>
             </div>
-          </div>
-          <div class="sixteen wide column" style="padding-top: 15px;">
-              <div class="ui stackable divided grid">
-              <div class="one column row">
-                <div class="column">
-                    <div class="ui divider" style="width: 70%; margin-right: auto; margin-left: auto;"></div>
-                    <div style="position: relative; margin-right: auto; margin-left: auto; text-align: center;">
-                      <p class="gotham-bold" style="width: 100%;color:#f26202; font-size: 2.3em;"> {{pluginTitle}} </p>
-                    </div>
-                </div>
-              </div>
-                  <div class="three column row">
-                      <div class="column" style="border-top: 0 !important;">
-                        <div class="item">
-                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
-                            <img src="images/main-products/PBART1.png" class="plugin-image" style="">
-                          </div>
-
-                          <div class="content">
-                            <a class="promotions description">
-                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto;">
-                                {{plugin1}}
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="item">
-                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
-                            <img src="images/main-products/PBART2.png" class="plugin-image" style="">
-                          </div>
-
-                          <div class="content">
-                            <a class="promotions description">
-                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto;">
-                                {{plugin2}}
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="item">
-                          <div style="margin-right: auto; margin-left: auto; text-align: center;">
-                            <img src="images/main-products/PBART3.png" class="plugin-image" style="">
-                          </div>
-
-                          <div class="content">
-                            <a class="promotions description">
-                              <div class="gotham-light" style="color: rgb(50, 50, 50); letter-spacing: 2px;margin-right: auto; margin-left: auto;">
-                                {{plugin3}}
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-              </div>
           </div>
       </div>
     </div>
@@ -484,10 +439,7 @@
                 <a href="about.html" class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em; text-decoration: none;"> About Us </a><br/>
               </div>
               <div style="padding-top: 15px;">
-                <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Terms & Conditions </span><br/>
-              </div>
-              <div style="padding-top: 15px;">
-                <span class="home-footer-label-text gotham-light"style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;"> Your Privacy </span><br/>
+                <a href="faq.html" class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; font-size: 1.4em;">FAQs </a><br/>
               </div>
         </div>
         <div class="three wide column" >
@@ -541,13 +493,10 @@
               <a href="about.html" class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; text-decoration: none;"> About </a><br/>
           </div>
           <div style="padding-top: 15px;">
-              <a href="contact.html" class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; text-decoration: none;"> T&C </a><br/>
+              <a href="faq.html" class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; text-decoration: none;"> FAQs </a><br/>
           </div>
           <div style="padding-top: 15px;">
-              <a href="contact.html" class="home-footer-label-text gotham-light"style="color: rgba(27, 28, 29, 0.39); padding: 15px; text-decoration: none;"> Privacy </a><br/>
-          </div>
-          <div style="padding-top: 15px;">
-              <a href="products.html" class="gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; text-decoration: none;"> Products </a><br/>
+              <a href="powerbanks.html" class="gotham-light" style="color: rgba(27, 28, 29, 0.39); padding: 15px; text-decoration: none;"> Products </a><br/>
           </div>
         </div>
         <div class="column" >
@@ -586,7 +535,7 @@
    </div>
    <div class="row">
         <div class="column" style="text-align: center; margin-top: 10%;">
-        <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); font-size: 1.6em;"> &copy; 2016 | Web Development by <a target="__blank" href="http://www.jdmdev.net" style="color: rgba(27, 28, 29, 0.39); text-decoration: none;">www.jdmdev.net</a></span>
+        <span class="home-footer-label-text gotham-light" style="color: rgba(27, 28, 29, 0.39); font-size: 1em;"> &copy; 2016 | Web Development by <a target="__blank" href="http://www.jdmdev.net" style="color: rgba(27, 28, 29, 0.39); text-decoration: none;">www.jdmdev.net</a></span>
         </div>
       </div>
  </div>
@@ -629,18 +578,18 @@
        <a href="index.html"><img src="images/logo_test.png" style="min-width: 105px; height: 75px; margin-top: 15px;" /></a>
      </div>
 
-     <div class="eleven wide middle aligned column" style="height: 100%;">
+<div class="eleven wide middle aligned column" style="height: 100%;">
        <div class="ui white four borderless item menu" style="padding: 0 !important; height: 85px; min-height: 100%;">
         <a id="borderless-item-products" class="borderless item active gotham-default" href="products.html">
-          <span> Products </span>
+          <span class="products-header"> Products </span>
         </a>
         <a id="borderless-item-about" class="borderless item gotham-default" href="about.html">
-          <span> About </span>
+          <span class="about-header"> About </span>
         </a>
         <a id="borderless-item-contact" class="borderless item gotham-default" href="contact.html">
-          <span> Contact </span>
+          <span class="contact-header"> Contact </span>
         </a>
-        <span class="borderless item gotham-default">
+        <span class="borderless item gotham-default phone-header">
           <i class="call icon"></i> (855) 392-9301
         </span>
       </div>
@@ -747,7 +696,8 @@ var rxLandingProducts = new Ractive({
    el:'#products-landing-container',
    template: '#products-landing-template',
    data: {
-      isMobile: false
+      isMobile: false,
+      headerUrl: 'images/main-products/PRODUCTS_HEADER.jpg'
    }
  });
 
