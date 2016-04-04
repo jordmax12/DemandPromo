@@ -9,7 +9,7 @@ $mail = new PHPMailer;
 $mail->From = $email;
 $mail->FromName = $name;
 
-$mail->addAddress("jordmax12@gmail.com", "End User");
+$mail->addAddress("joshgross@axizgroup.com", "End User");
 
 $mail->isHTML(true);
 
