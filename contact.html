@@ -32,7 +32,11 @@
         </div>
         <div class="field">
           <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
-            <option value="product"> Product </option>
+            <option value="power_bank"> Power Bank </option>
+            <option value="travel_kit"> Travel Kit </option>
+            <option value="selfie_stick"> Selfie Stick </option>
+            <option value="Speaker"> Speaker </option>
+            <option value="USB"> USB </option>
           </select>
         </div>
         <div class="field">
@@ -75,7 +79,11 @@
         </div>
         <div class="field">
           <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
-            <option value="product"> Product </option>
+            <option value="power_bank"> Power Bank </option>
+            <option value="travel_kit"> Travel Kit </option>
+            <option value="selfie_stick"> Selfie Stick </option>
+            <option value="Speaker"> Speaker </option>
+            <option value="USB"> USB </option>
           </select>
         </div>
         <div class="field">
@@ -117,7 +125,7 @@ background: url('images/landing-home/HOME_HEADER.jpg') no-repeat center center; 
           <div class="column" style="text-align: center;">
             <h1 class="home-guarantee-title gotham-light" style="letter-spacing: 3px;"> &#9679; CONTACT US &#9679;</h1>
             <h2 class="home-lower-title gotham-bold" style="max-width: 80%; margin-right: auto; margin-left: auto; font-size: 3em;"> Call us for more details </h2>
-            <h2 class="home-lower-title gotham-bold" style="color: #00ADDB; max-width: 80%; margin-right: auto; margin-left: auto;"> 855-392-9301 </h2>
+            <h2 class="home-lower-title gotham-bold" style="color: #00ADDB; max-width: 80%; margin-right: auto; margin-left: auto;"> (888) 285-2617 </h2>
 
             <div class="ui divider" style="max-width: 60%; margin-right: auto; margin-left: auto;"></div>
             <h3 class="home-lower-title gotham-light" style="letter-spacing: 1px;"> DemandPromo.com<br/>
@@ -372,7 +380,7 @@ background: url('images/landing-home/HOME_HEADER.jpg') no-repeat center center; 
           <span class="contact-header"> Contact </span>
         </a>
         <span class="borderless item gotham-default phone-header">
-          <i class="call icon"></i> (855) 392-9301
+          <i class="call icon"></i> (888) 285-2617
         </span>
       </div>
      </div>
@@ -409,15 +417,15 @@ $(document).ready(function() {
   $('#get-quote-quantity').numeric({decimal: false, negative: false});
   $('#get-quote-quantity-modal').numeric({decimal: false, negative: false});
   $('#get-quote-form').submit(function (e) {
-       if($('#get-quote-quantity').val().length == 0 || $('#get-quote-name').val().length == 0 || $('#get-quote-email').val().length == 0) {
-            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+       if($('#get-quote-email').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Email", "error");
             e.preventDefault();
        }
   });
 
   $('#get-quote-form-modal').submit(function (e) {
-       if($('#get-quote-quantity-modal').val().length == 0 || $('#get-quote-name-modal').val().length == 0 || $('#get-quote-email-modal').val().length == 0) {
-            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+       if($('#get-quote-email-modal').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Email", "error");
             e.preventDefault();
        }
   });
@@ -429,16 +437,6 @@ $(document).ready(function() {
     appendArrows: false,
     autoplaySpeed: 1500
   });
-
-  var query = getQueryParams(document.location.search);
-  if(query.success !== undefined) {
-    if(query.success) {
-      swal("", "We'll be in contact soon, thanks!", "success");
-      
-    } else {
-      swal("", query.message, "error");
-    }
-  }
             
 });
 

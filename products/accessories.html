@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../styles/semantic-custom.css" />
   <link rel="stylesheet" href="../styles/remodal.css" />
   <link rel="stylesheet" href="../styles/remodal-default-theme.css" />
-  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.sync.bootstrap.min.js"></script>
+<!--  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.sync.bootstrap.min.js"></script>-->
 </head>
 <body>
 <div class="remodal" data-remodal-id="modal"
@@ -31,7 +31,11 @@
         </div>
         <div class="field">
           <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
-            <option value="product"> Product </option>
+            <option value="power_bank"> Power Bank </option>
+            <option value="travel_kit"> Travel Kit </option>
+            <option value="selfie_stick"> Selfie Stick </option>
+            <option value="Speaker"> Speaker </option>
+            <option value="USB"> USB </option>
           </select>
         </div>
         <div class="field">
@@ -74,8 +78,12 @@
           <input type="text" name="quantity" placeholder="Quantity" id="get-quote-quantity">
         </div>
         <div class="field">
-          <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
-            <option value="product"> Product </option>
+           <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
+            <option value="power_bank"> Power Bank </option>
+            <option value="travel_kit"> Travel Kit </option>
+            <option value="selfie_stick"> Selfie Stick </option>
+            <option value="Speaker"> Speaker </option>
+            <option value="USB"> USB </option>
           </select>
         </div>
         <div class="field">
@@ -180,7 +188,7 @@
             </div>
           <div class="six wide column">
               <div style="max-width: 350px !important;" class="get-quote-popup"></div>
-              <div class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2e160000ff000584c752" data-style-height="423px" data-style-width="100%" data-theme="light">
+              <div class="trustpilot-widget" data-locale="en-US" data-template-id="539ad60defb9600b94d7df2c" data-businessunit-id="562e2e160000ff000584c752" data-style-height="423px" data-style-width="100%" data-theme="light" style="max-width: 400px;">
     <a href="https://www.trustpilot.com/review/demandpromo.com" target="_blank">Trustpilot</a>
 </div>
           </div>
@@ -438,7 +446,7 @@
           <span class="contact-header"> Contact </span>
         </a>
         <span class="borderless item gotham-default phone-header">
-          <i class="call icon"></i> (855) 392-9301
+          <i class="call icon"></i> (888) 285-2617
         </span>
       </div>
      </div>
@@ -463,15 +471,15 @@ $(document).ready(function() {
   $('#get-quote-quantity').numeric({decimal: false, negative: false});
   $('#get-quote-quantity-modal').numeric({decimal: false, negative: false});
   $('#get-quote-form').submit(function (e) {
-       if($('#get-quote-quantity').val().length == 0 || $('#get-quote-name').val().length == 0 || $('#get-quote-email').val().length == 0) {
-            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+       if($('#get-quote-email').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Email", "error");
             e.preventDefault();
        }
   });
 
   $('#get-quote-form-modal').submit(function (e) {
-       if($('#get-quote-quantity-modal').val().length == 0 || $('#get-quote-name-modal').val().length == 0 || $('#get-quote-email-modal').val().length == 0) {
-            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+       if($('#get-quote-email-modal').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Email", "error");
             e.preventDefault();
        }
   });
@@ -596,11 +604,6 @@ var rxProducts = new Ractive({
           }
       ],
       mobileProducts: [
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
           {
               PL: 'Accessories',
               PLimageUrl: 'accessories',

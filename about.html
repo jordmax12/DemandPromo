@@ -32,7 +32,11 @@
         </div>
         <div class="field">
           <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
-            <option value="product"> Product </option>
+            <option value="power_bank"> Power Bank </option>
+            <option value="travel_kit"> Travel Kit </option>
+            <option value="selfie_stick"> Selfie Stick </option>
+            <option value="Speaker"> Speaker </option>
+            <option value="USB"> USB </option>
           </select>
         </div>
         <div class="field">
@@ -75,7 +79,11 @@
         </div>
         <div class="field">
           <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
-            <option value="product"> Product </option>
+            <option value="power_bank"> Power Bank </option>
+            <option value="travel_kit"> Travel Kit </option>
+            <option value="selfie_stick"> Selfie Stick </option>
+            <option value="Speaker"> Speaker </option>
+            <option value="USB"> USB </option>
           </select>
         </div>
         <div class="field">
@@ -366,7 +374,7 @@ We welcome you to our website.  Take a look around and let us know what we can d
           <span class="contact-header"> Contact </span>
         </a>
         <span class="borderless item gotham-default phone-header">
-          <i class="call icon"></i> (855) 392-9301
+          <i class="call icon"></i> (888) 285-2617
         </span>
       </div>
      </div>
@@ -403,15 +411,15 @@ $(document).ready(function() {
   $('#get-quote-quantity').numeric({decimal: false, negative: false});
   $('#get-quote-quantity-modal').numeric({decimal: false, negative: false});
   $('#get-quote-form').submit(function (e) {
-       if($('#get-quote-quantity').val().length == 0 || $('#get-quote-name').val().length == 0 || $('#get-quote-email').val().length == 0) {
-            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+       if($('#get-quote-email').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Email", "error");
             e.preventDefault();
        }
   });
 
   $('#get-quote-form-modal').submit(function (e) {
-       if($('#get-quote-quantity-modal').val().length == 0 || $('#get-quote-name-modal').val().length == 0 || $('#get-quote-email-modal').val().length == 0) {
-            swal("", "Form is not complete. Please make sure you include Name, Email and Quantity", "error");
+       if($('#get-quote-email-modal').val().length == 0) {
+            swal("", "Form is not complete. Please make sure you include Email", "error");
             e.preventDefault();
        }
   });
