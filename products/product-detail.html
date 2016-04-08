@@ -148,7 +148,7 @@
                             <h2 class="gotham-light" style="color: #f2711c; font-size: 2.3em; margin-top: 0 !important;">SPECIFICATIONS</h2>
                         </div>
                         <div style="margin-top: 10px; width: 100%; max-width:300px; word-break: all; text-align: right; float: right;">
-                          <h4 class="gotham-light" style="color: rgb(50,50,55);"> {{techSpecifications}} </h4>
+                          <h4 class="gotham-light" style="color: rgb(50,50,55);"> {{{techSpecifications}}} </h4>
                         </div>
                       </div>
                     </div>
@@ -206,7 +206,7 @@
                             <h2 class="gotham-light" style="color: #f2711c; font-size: 2.3em; margin-top: 0 !important;">SPECIFICATIONS</h2>
                         </div>
                         <div style="margin-top: 10px; width: 100%; max-width:300px; word-break: all; text-align: right; float: right;">
-                          <h4 class="gotham-light" style="color: rgb(50,50,55);"> {{techSpecifications}} </h4>
+                          <h4 class="gotham-light" style="color: rgb(50,50,55);"> {{{techSpecifications}}} </h4>
                         </div>
                       </div>
                     </div>
@@ -260,7 +260,7 @@
                             <h2 class="gotham-light" style="color: #f2711c; font-size: 2.3em; margin-top: 0 !important;">SPECIFICATIONS</h2>
                         </div>
                         <div style="margin-top: 10px; text-align: center;">
-                          <h4 class="gotham-light" style="color: rgb(50,50,55); margin-right: auto; margin-left: auto; max-width: 300px;"> {{techSpecifications}} </h4>
+                          <h4 class="gotham-light" style="color: rgb(50,50,55); margin-right: auto; margin-left: auto; max-width: 300px;"> {{{techSpecifications}}} </h4>
                         </div>
                       </div>
                     </div>
@@ -614,15 +614,30 @@
  </div>
 </script>
 
+<script id="not-found-template" type="text/html">
+  <div class="ui basic grid">
+    <div class="column">
+      <div style="text-align: center; margin-top: 100px;" class="ui header">
+        <h1 class="gotham-light"> 404 Page not found </h1>
+      </div>
+    </div>
+    
+  </div>
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+<script src='../scripts/ractive.js'></script>
 <script src='../scripts/SemanticUI/semantic.min.js'></script>
 <script src='../scripts/remodal.js'></script>
 <script src='../scripts/SweetAlert/sweetalert.min.js'></script>
 <script src='../scripts/numeric.js'></script>
 <script src='../scripts/Slick/slick.min.js'></script>
+<script src='../scripts/Products.js'></script>
 <script>
+
 $(document).ready(function() {
+
+
   $('#get-quote-quantity').numeric({decimal: false, negative: false});
   $('#get-quote-quantity-modal').numeric({decimal: false, negative: false});
   $('#get-quote-form').submit(function (e) {
@@ -641,6 +656,21 @@ $(document).ready(function() {
             
 });
 
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
 function getQueryParams(qs) {
     qs = qs.split('+').join(' ');
 
@@ -656,16 +686,16 @@ function getQueryParams(qs) {
 }
 
  var rxMain = new Ractive({
-           // The `el` option can be a node, an ID, or a CSS selector.
-           el: '#screen-container',
-           template: '#template',
-           data: { 
-             name: 'world',
-             products: [
+     // The `el` option can be a node, an ID, or a CSS selector.
+     el: '#screen-container',
+     template: '#template',
+     data: { 
+       name: 'world',
+       products: [
 
-             ]
-           }
-         });
+       ]
+     }
+   });
 
  var rxNavbar = new Ractive({
    el:'#navbar-container',
@@ -799,6 +829,56 @@ var rxLandingProductDetail = new Ractive({
     rxGetQuote.set('file', file);
      //TODO do something with fileList.  
   });
+
+
+var sku = getUrlParameter('sku');
+if(sku == null) {
+  //not found page
+  rxMain.resetTemplate("#not-found-template");
+  $('#screen-container').css('min-height', '70%');
+}else {
+  //loop through products and find correct information
+   count = 0;
+  for(var i = 0; i < prods.length; i++) {
+    var cur = prods[i];
+    if(cur.sku == sku) {
+      count++;
+      rxProductDetail.set('productTitle', cur.productTitle);
+      rxProductDetail.set('productUpperDescription', cur.productUpperDescription);
+      rxProductDetail.set('productLowerDescription', cur.productLowerDescription);
+      rxProductDetail.set('printingOptions', cur.printingOptions);
+      rxProductDetail.set('techSpecifications', cur.techSpecifications);
+      if(cur.computerSlide1 != null)
+        rxLandingProductDetail.set('computerSlide1', cur.computerSlide1);
+      else
+        rxLandingProductDetail.set('computerSlide1', null);
+      if(cur.computerSlide2 != null)
+        rxLandingProductDetail.set('computerSlide2', cur.computerSlide2);
+      else
+        rxLandingProductDetail.set('computerSlide2', null);
+      if(cur.computerSlide3 != null)
+        rxLandingProductDetail.set('computerSlide3', cur.computerSlide3);
+      else
+        rxLandingProductDetail.set('computerSlide3', null);
+      if(cur.computerSlide4 != null)
+        rxLandingProductDetail.set('computerSlide4', cur.computerSlide4);
+      else
+        rxLandingProductDetail.set('computerSlide4', null);
+      if(cur.computerSlide5 != null)
+        rxLandingProductDetail.set('computerSlide5', cur.computerSlide5);
+      else
+        rxLandingProductDetail.set('computerSlide5', null);
+    }
+
+
+  }
+
+    if(count == 0) {
+      rxMain.resetTemplate("#not-found-template");
+      $('#screen-container').css('min-height', '70%');
+    }
+}
+
   setInterval(function() {
     if(prev == 'notset')
       prev = ($('.mobile.only.row').css('display') != "none");
