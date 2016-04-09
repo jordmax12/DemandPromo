@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../styles/semantic-custom.css" />
   <link rel="stylesheet" href="../styles/remodal.css" />
   <link rel="stylesheet" href="../styles/remodal-default-theme.css" />
-<!--  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.sync.bootstrap.min.js"></script>-->
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.sync.bootstrap.min.js"></script>
 </head>
 <body>
 <div class="remodal" data-remodal-id="modal"
@@ -174,7 +174,7 @@
                       <div class="products item">
                         <div class="image">
                           <a href="{{PLredirect}}">
-                            <img class="products-image" src="../images/products-home/{{PLimageUrl}}.png">
+                            <img class="products-image" src="{{PLimageUrl}}.png">
                           </a>
                         </div>
                         <div class="content">
@@ -203,7 +203,7 @@
                       <div class="products item">
                         <div class="image">
                           <a href="{{PLredirect}}">
-                            <img class="products-image" src="../images/products-home/{{PLimageUrl}}.png">
+                            <img class="products-image" src="{{PLimageUrl}}.png">
                           </a>
                         </div>
                         <div class="content">
@@ -466,6 +466,7 @@
 <script src='../scripts/remodal.js'></script>
 <script src='../scripts/SweetAlert/sweetalert.min.js'></script>
 <script src='../scripts/numeric.js'></script>
+<script src='../scripts/Products.js'></script>
 <script>
 $(document).ready(function() {
   $('#get-quote-quantity').numeric({decimal: false, negative: false});
@@ -571,65 +572,8 @@ var rxProducts = new Ractive({
    data: {
       isMobile: false,
       pluginTitle: 'LOREM IPSUM',
-      products: [
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          }
-      ],
-      mobileProducts: [
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Accessories',
-              PLimageUrl: 'accessories',
-              PLredirect: 'product-detail.html'
-          }
-      ],
+      products: [],
+      mobileProducts: [],
       plugin1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ',
       plugin2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ',
       plugin3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
@@ -688,6 +632,32 @@ var rxProducts = new Ractive({
     rxGetQuote.set('file', file);
      //TODO do something with fileList.  
   });
+
+  function getProducts() {
+    function productObj() {
+          this.PL = '';
+          this.PLimageUrl = '';
+          this.PLredirect = '';
+    }
+
+    var _products = [];
+
+    for(var i = 0; i < prods.length; i++) {
+      if(prods[i].category == "accessories") {
+        var product = new productObj();
+        product.PL = prods[i].productTitle;
+        product.PLimageUrl = '../images/products/accessory/' + prods[i].productTitle.replace(/\s/g, "_") 
+        product.PLredirect = 'product-detail.html?sku=' + prods[i].sku;
+        console.log(product);
+        _products.push(product);
+      }
+    }
+    rxProducts.set('products', _products);
+  }
+
+  //get products
+  getProducts();
+
   setInterval(function() {
     if(prev == 'notset')
       prev = ($('.mobile.only.row').css('display') != "none");

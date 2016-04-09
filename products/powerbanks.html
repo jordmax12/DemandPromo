@@ -208,7 +208,7 @@
                       <div class="products item">
                         <div class="image">
                           <a href="{{PLredirect}}">
-                            <img class="products-image" src="../images/products-home/{{PLimageUrl}}.png">
+                            <img class="products-image" src="{{PLimageUrl}}.png">
                           </a>
                         </div>
                         <div class="content">
@@ -309,7 +309,7 @@
                       <div class="products item">
                         <div class="image">
                           <a href="{{PLredirect}}">
-                            <img class="products-image" src="../images/products-home/{{PLimageUrl}}.png">
+                            <img class="products-image" src="{{PLimageUrl}}.png">
                           </a>
                         </div>
                         <div class="content">
@@ -631,6 +631,7 @@
 <script src='../scripts/remodal.js'></script>
 <script src='../scripts/SweetAlert/sweetalert.min.js'></script>
 <script src='../scripts/numeric.js'></script>
+<script src='../scripts/Products.js'></script>
 <script>
 $(document).ready(function() {
   $('#get-quote-quantity').numeric({decimal: false, negative: false});
@@ -738,70 +739,8 @@ var rxProducts = new Ractive({
       pluginTitle1: 'SELECT',
       pluginTitle2: 'BRAND',
       pluginTitle3: 'PROMOTE',
-       products: [
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          }
-        ],
-        mobileProducts: [
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          },
-          {
-              PL: 'Powerbanks',
-              PLimageUrl: 'powerbanks',
-              PLredirect: 'product-detail.html'
-          }
-      ],
+       products: [],
+       mobileProducts: [],
       plugin1: 'Charge your power bank ahead of time with the included charging cable.',
       plugin2: 'Using your device\'s charging cable, simply connect the USB connector to the OUT port of the power bank. Then plug your cable connector to your device.',
       plugin3: 'Power up. Never deal with a dead battery again!'
@@ -860,6 +799,30 @@ var rxProducts = new Ractive({
     rxGetQuote.set('file', file);
      //TODO do something with fileList.  
   });
+  function getProducts() {
+    function productObj() {
+          this.PL = '';
+          this.PLimageUrl = '';
+          this.PLredirect = '';
+    }
+
+    var _products = [];
+
+    for(var i = 0; i < prods.length; i++) {
+      if(prods[i].category == "powerbanks") {
+        var product = new productObj();
+        product.PL = prods[i].productTitle;
+        product.PLimageUrl = '../images/products/power banks/' + prods[i].productTitle.replace(/\s/g, "_");
+        product.PLredirect = 'product-detail.html?sku=' + prods[i].sku;
+        _products.push(product);
+      }
+    }
+    rxProducts.set('products', _products);
+  }
+
+  //get products
+  getProducts();
+
   setInterval(function() {
     if(prev == 'notset')
       prev = ($('.mobile.only.row').css('display') != "none");
