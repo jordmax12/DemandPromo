@@ -100,7 +100,7 @@
 background: url('images/landing-home/HOME_HEADER.jpg') no-repeat center center; -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; -o-background-size: 100px 100%; background-size: 100% 400px; 
  -->
  <script id="about-landing-template" type="text/html">
-    <div class="ui vertical stripe segment" id="about-landing-segment" style="background-color: #F5F5F5; padding-bottom: 0; width: 100%;">
+<!--     <div class="ui vertical stripe segment" id="about-landing-segment" style="background-color: #F5F5F5; padding-bottom: 0; width: 100%;">
         <div class="ui stackable grid" id="aboput-landing-banner" style="padding-bottom: 50px; height: 400px; background: url('images/about-landing/ABOUT_US_HEADER.jpg') no-repeat center center; -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; -o-background-size: 100px 100%; background-size: 100% 400px; ">
           <div class="three column row" >
             <div class="column">
@@ -110,11 +110,10 @@ background: url('images/landing-home/HOME_HEADER.jpg') no-repeat center center; 
               
             </div>
             <div class="column">
-              <!-- <div class="get-quote-popup" style=""></div> -->
             </div>
           </div>
       </div>
-    </div>
+    </div> -->
  </script>
 <!--  -->
 
@@ -393,9 +392,32 @@ background: url('images/landing-home/HOME_HEADER.jpg') no-repeat center center; 
    </div>
  </div>
 </script>
+<!-- Google Code for Inquiry Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 955058009;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "YyrlCNnx9lkQ2Y60xwM";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+(function(a,e,c,f,g,b,d){var h={ak:"955058009",cl:"9MaTCL_AumAQ2Y60xwM"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[f]||(a[f]=h.ak);b=e.createElement(g);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(g)[0];d.parentNode.insertBefore(b,d);a._googWcmGet=function(b,d,e){a[c](2,b,h,d,null,new Date,e)}})(window,document,"_googWcmImpl","_googWcmAk","script");
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/955058009/?label=YyrlCNnx9lkQ2Y60xwM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
 <!-- AIzaSyDJ89dBeTULmaeME8_acqMOeVhfSkw5-7s -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src='scripts/ractive.js'></script>
+<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
 <script src='scripts/SemanticUI/semantic.min.js'></script>
 <script src='scripts/remodal.js'></script>
 <script src='scripts/SweetAlert/sweetalert.min.js'></script>
@@ -581,6 +603,7 @@ var rxGuarantee= new Ractive({
  });
   //slows down application, although this works
   rxLandingProducts.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
+  $('#screen-container').css('min-height', 'auto');
   var prev = 'notset';
 
   $('#get-quote-file-upload-modal').on('change', function(event) {

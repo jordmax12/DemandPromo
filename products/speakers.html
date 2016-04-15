@@ -79,11 +79,9 @@
         </div>
         <div class="field">
           <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
-            <option value="power_bank"> Power Bank </option>
-            <option value="travel_kit"> Travel Kit </option>
-            <option value="selfie_stick"> Selfie Stick </option>
-            <option value="Speaker"> Speaker </option>
-            <option value="USB"> USB </option>
+            {{#each quoteOptions:i}}
+              <option value="{{formattedPL}}"> {{PL}} </option>
+            {{/each}}
           </select>
         </div>
         <div class="field">
@@ -196,7 +194,7 @@
           <div class="ten wide column">
               <div class="ui grid">
                 <div class="two column row">
-                  {{#each mobileProducts}}
+                  {{#each products}}
                     <div class="products column">
                       <div class="products item">
                         <div class="image">
@@ -437,10 +435,10 @@
         <a id="borderless-item-products" class="borderless item active gotham-default" href="../products.html">
           <span class="products-header"> Products </span>
         </a>
-        <a id="borderless-item-about" class="borderless item gotham-default" href="about.html">
+        <a id="borderless-item-about" class="borderless item gotham-default" href="../about.html">
           <span class="about-header"> About </span>
         </a>
-        <a id="borderless-item-contact" class="borderless item gotham-default" href="contact.html">
+        <a id="borderless-item-contact" class="borderless item gotham-default" href="../contact.html">
           <span class="contact-header"> Contact </span>
         </a>
         <span class="borderless item gotham-default phone-header">
@@ -458,8 +456,12 @@
  </div>
 </script>
 
+<script type="text/javascript">
+(function(a,e,c,f,g,b,d){var h={ak:"955058009",cl:"9MaTCL_AumAQ2Y60xwM"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[f]||(a[f]=h.ak);b=e.createElement(g);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(g)[0];d.parentNode.insertBefore(b,d);a._googWcmGet=function(b,d,e){a[c](2,b,h,d,null,new Date,e)}})(window,document,"_googWcmImpl","_googWcmAk","script");
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src='../scripts/ractive.js'></script>
+<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
 <script src='../scripts/SemanticUI/semantic.min.js'></script>
 <script src='../scripts/remodal.js'></script>
 <script src='../scripts/SweetAlert/sweetalert.min.js'></script>
@@ -598,7 +600,8 @@ var rxProducts = new Ractive({
    template: '#get-quote-module',
    data: {
     file: null,
-    getQuoteProductSelect: 'product'
+    getQuoteProductSelect: 'product',
+    quoteOptions: []
    },
    onrender: function() {
     $('#get-quote-file-upload').on('change', function(event) {
@@ -630,11 +633,12 @@ var rxProducts = new Ractive({
     rxGetQuote.set('file', file);
      //TODO do something with fileList.  
   });
-  function getProducts() {
+function getProducts() {
     function productObj() {
           this.PL = '';
           this.PLimageUrl = '';
           this.PLredirect = '';
+          this.formattedPL = '';
     }
 
     var _products = [];
@@ -644,11 +648,14 @@ var rxProducts = new Ractive({
         var product = new productObj();
         product.PL = prods[i].productTitle;
         product.PLimageUrl = '../images/products/speakers/' + prods[i].productTitle.replace(/\s/g, "_");
+        product.formattedPL = prods[i].productTitle.replace(/\s/g, "_").toLowerCase();
         product.PLredirect = 'product-detail.html?sku=' + prods[i].sku;
         _products.push(product);
       }
     }
+
     rxProducts.set('products', _products);
+    rxGetQuote.set('quoteOptions', _products);
   }
 
   //get products

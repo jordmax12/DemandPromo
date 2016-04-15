@@ -100,7 +100,7 @@
 background: url('images/landing-home/HOME_HEADER.jpg') no-repeat center center; -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; -o-background-size: 100px 100%; background-size: 100% 400px; 
  -->
  <script id="about-landing-template" type="text/html">
-    <div class="ui vertical stripe segment" id="about-landing-segment" style="background-color: #F5F5F5; padding-bottom: 0; width: 100%;">
+    <!-- <div class="ui vertical stripe segment" id="about-landing-segment" style="background-color: #F5F5F5; padding-bottom: 0; width: 100%;">
         <div class="ui stackable grid" id="about-landing-banner" style="padding-bottom: 50px; height: 400px; background: url('images/about-landing/ABOUT_US_HEADER.jpg') no-repeat center center; -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; -o-background-size: 100px 100%; background-size: 100% 400px; ">
           <div class="three column row" >
             <div class="column">
@@ -110,11 +110,10 @@ background: url('images/landing-home/HOME_HEADER.jpg') no-repeat center center; 
               
             </div>
             <div class="column">
-              <!-- <div class="get-quote-popup" style=""></div> -->
             </div>
           </div>
-      </div>
-    </div>
+      </div> 
+    </div>-->
  </script>
 <!--  -->
 
@@ -389,7 +388,7 @@ We welcome you to our website.  Take a look around and let us know what we can d
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src='scripts/ractive.js'></script>
+<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
 <script src='scripts/SemanticUI/semantic.min.js'></script>
 <script src='scripts/remodal.js'></script>
 <script src='scripts/SweetAlert/sweetalert.min.js'></script>
@@ -574,7 +573,7 @@ var rxGuarantee= new Ractive({
    }
  });
   //slows down application, although this works
-  rxLandingProducts.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
+  rxLandingAbout.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
   var prev = 'notset';
 
   $('#get-quote-file-upload-modal').on('change', function(event) {
@@ -583,6 +582,8 @@ var rxGuarantee= new Ractive({
     rxGetQuote.set('file', file);
      //TODO do something with fileList.  
   });
+
+  $('#screen-container').css('min-height', 'auto');
   setInterval(function() {
     if(prev == 'notset')
       prev = ($('.mobile.only.row').css('display') != "none");

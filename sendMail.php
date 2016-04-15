@@ -10,6 +10,8 @@ $mail->From = $email;
 $mail->FromName = $name;
 
 $mail->addAddress("sales@demandpromo.com", "End User");
+$mail->addAddress("jpgross2@gmail.com", "End User 2");
+//$mail->addAddress("jordmax12@gmail.com", "End User 2");
 
 $mail->isHTML(true);
 

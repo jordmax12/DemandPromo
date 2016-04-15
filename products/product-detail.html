@@ -81,11 +81,7 @@
         </div>
         <div class="field">
            <select class="select" id="get-quote-product-select" name="product" value="{{getQuoteProductSelect}}">
-            <option value="power_bank"> Power Bank </option>
-            <option value="travel_kit"> Travel Kit </option>
-            <option value="selfie_stick"> Selfie Stick </option>
-            <option value="Speaker"> Speaker </option>
-            <option value="USB"> USB </option>
+            <option value="power_bank"> {{quoteOption}} </option>
           </select>
         </div>
         <div class="field">
@@ -125,14 +121,17 @@
                         <div style="margin-top: 10px; width: 80%; word-break: all;">
                           <h4 class="gotham-light" style="color: rgb(50,50,55);"> Color options: </h4>
                         </div>
-                        <label class="ui red option label">     </label>
-                        <label class="ui blue option label">    </label>
+                        {{#each colors:i}}
+                          <label class="ui {{colors[i]}} option label">     </label>
+                        {{/each}}
+                        
+<!--                         <label class="ui blue option label">    </label>
                         <label class="ui green option label">     </label>
                         <label class="ui yellow option label">     </label>
                         <label class="ui orange option label">     </label>
                         <label class="ui pink option label">     </label>
                         <label class="ui white option label">     </label>
-                        <label class="ui black option label">     </label>
+                        <label class="ui black option label">     </label> -->
                         <div style="margin-top: 10px; width: 100%; word-break: all;">
                           <h4 class="gotham-light" style="color: rgb(50,50,55);"> {{{printingOptions}}} </h4>
                         </div>
@@ -188,14 +187,9 @@
                           <h4 class="gotham-light" style="color: rgb(50,50,55);"> Color options: </h4>
                         </div>
                         <div style="float: right;">
-                          <label class="ui red option label">     </label>
-                          <label class="ui blue option label">    </label>
-                          <label class="ui green option label">     </label>
-                          <label class="ui yellow option label">     </label>
-                          <label class="ui orange option label">     </label>
-                          <label class="ui pink option label">     </label>
-                          <label class="ui white option label">     </label>
-                          <label class="ui black option label">     </label>
+                        {{#each colors:i}}
+                          <label class="ui {{colors[i]}} option label">     </label>
+                        {{/each}}
                         </div>
                        
                         <div style="margin-top: 10px; width: 100%; word-break: all; text-align: right; float: right;">
@@ -242,14 +236,9 @@
                           <h4 class="gotham-light" style="color: rgb(50,50,55);"> Color options: </h4>
                         </div>
                         <div style="">
-                          <label class="ui red option label">     </label>
-                          <label class="ui blue option label">    </label>
-                          <label class="ui green option label">     </label>
-                          <label class="ui yellow option label">     </label>
-                          <label class="ui orange option label">     </label>
-                          <label class="ui pink option label">     </label>
-                          <label class="ui white option label">     </label>
-                          <label class="ui black option label">     </label>
+                          {{#each colors:i}}
+                            <label class="ui {{colors[i]}} option label">     </label>
+                          {{/each}}
                         </div>
                        
                         <div style="margin-top: 10px; width: 100%; word-break: all;">
@@ -279,21 +268,38 @@
           <div class="computer only row" >
             <div class="column">
               <div class="slider lazy" style="max-width: 800px; margin-right: auto; margin-left: auto;border: #f2711c 1px solid; ">
+              {{#desktopCarousel}}
+                <div style="height: 400px; "> 
+                    <img style="height: 100%; width: 100%;" src="{{image}}"  />
+                </div>
+              {{/desktopCarousel}}
+
+                <!-- {{#if computerSlide1 != "empty"}}
                 <div style="height: 400px; "> 
                     <img style="height: 100%; width: 100%;" src="{{computerSlide1}}"  />
                 </div>
+                {{/if}}
+                {{#if computerSlide2 != "empty"}}
                 <div style="height: 400px;"> 
                     <img style="height: 100%; width: 100%;" src="{{computerSlide2}}"  />
                 </div>
+                {{/if}}
+                {{#if computerSlide3 != "empty"}}
                 <div style="height: 400px;"> 
                     <img style="height: 100%; width: 100%;" src="{{computerSlide3}}"  />
                 </div>
+                {{/if}}
+                {{#if computerSlide4 != "empty"}}
                 <div style="height: 400px;"> 
                     <img style="height: 100%; width: 100%;" src="{{computerSlide4}}"  />
                 </div>
-                  <div style="height: 400px;"> 
+                {{/if}}
+                {{#if computerSlide5 != "empty"}}
+                <h1> TEST </h1>
+                <div style="height: 400px;"> 
                     <img style="height: 100%; width: 100%;" src="{{computerSlide5}}"  />
                 </div>
+                {{/if}} -->
               </div>
             </div>
           </div>
@@ -301,21 +307,37 @@
           <div class="tablet only row" >
             <div class="column">
               <div class="slider lazy" style="max-width: 700px; margin-right: auto; margin-left: auto;border: #f2711c 1px solid; ">
+                {{#tabletCarousel}}
+                <div style="height: 400px; "> 
+                    <img style="height: 100%; width: 100%;" src="{{image}}"  />
+                </div>
+                {{/tabletCarousel}}
+
+                <!-- {{#if tabletSlide1 != 'empty'}}
                 <div style="height: 350px; "> 
                     <img style="height: 100%; width: 100%;" src="{{tabletSlide1}}"  />
                 </div>
+                {{/if}}
+                {{#if tabletSlide2 != 'empty'}}
                 <div style="height: 350px;"> 
                     <img style="height: 100%; width: 100%;" src="{{tabletSlide2}}"  />
                 </div>
+                {{/if}}
+                {{#if tabletSlide13 != 'empty'}}
                 <div style="height: 350px;"> 
                     <img style="height: 100%; width: 100%;" src="{{tabletSlide3}}"  />
                 </div>
+                {{/if}}
+                {{#if tabletSlide4 != 'empty'}}
                 <div style="height: 350px;"> 
                     <img style="height: 100%; width: 100%;" src="{{tabletSlide4}}"  />
                 </div>
+                {{/if}}
+                {{#if tabletSlide5 != 'empty'}}
                 <div style="height: 350px;"> 
                     <img style="height: 100%; width: 100%;" src="{{tabletSlide5}}"  />
                 </div>
+                {{/if}} -->
               </div>
             </div>
           </div>
@@ -323,21 +345,37 @@
           <div class="mobile only row" >
             <div class="column">
               <div class="slider lazy" style="max-width: 700px; margin-right: auto; margin-left: auto;border: #f2711c 1px solid; ">
+                {{#mobileCarousel}}
+                  <div style="height: 400px; "> 
+                      <img style="height: 100%; width: 100%;" src="{{image}}"  />
+                  </div>
+                {{/mobileCarousel}}
+
+<!--                 {{#if mobileSlide1 != 'empty'}}
                 <div style="height: 350px; "> 
                     <img style="height: 100%; width: 100%;" src="{{mobileSlide1}}"  />
                 </div>
+                {{/if}}
+                {{#if mobileSlide2 != 'empty'}}
                 <div style="height: 350px;"> 
                     <img style="height: 100%; width: 100%;" src="{{mobileSlide2}}"  />
                 </div>
+                {{/if}}
+                {{#if mobileSlide3 != 'empty'}}
                 <div style="height: 350px;"> 
                     <img style="height: 100%; width: 100%;" src="{{mobileSlide3}}"  />
                 </div>
+                {{/if}}
+                {{#if mobileSlide4 != 'empty'}}
                 <div style="height: 350px;"> 
                     <img style="height: 100%; width: 100%;" src="{{mobileSlide4}}"  />
                 </div>
+                {{/if}}
+                {{#if mobileSlide5 != 'empty'}}
                 <div style="height: 350px;"> 
                     <img style="height: 100%; width: 100%;" src="{{mobileSlide5}}"  />
                 </div>
+                {{/if}} -->
               </div>
             </div>
           </div>
@@ -625,6 +663,10 @@
   </div>
 </script>
 
+<script type="text/javascript">
+(function(a,e,c,f,g,b,d){var h={ak:"955058009",cl:"9MaTCL_AumAQ2Y60xwM"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[f]||(a[f]=h.ak);b=e.createElement(g);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(g)[0];d.parentNode.insertBefore(b,d);a._googWcmGet=function(b,d,e){a[c](2,b,h,d,null,new Date,e)}})(window,document,"_googWcmImpl","_googWcmAk","script");
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src='../scripts/ractive.js'></script>
 <script src='../scripts/SemanticUI/semantic.min.js'></script>
@@ -742,7 +784,8 @@ function getQueryParams(qs) {
       productUpperDescription: 'CUSTOM METAL POWER BANK',
       productLowerDescription: 'Lorem ipupm dolar stramer consecetur adiscipling sed do eiusmod tempor incididunt ut labore et dolore magna alique. Ut enim ad minim veniam quis nostrud excetitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
       printingOptions: 'Priting options: Engraving, Color print<br/>Unit size: 3.5" x 1" x 1"<br/>Imprint area: Side of drive<br/>Imprint size: 2.62" x 0.5"',
-      techSpecifications: 'Lorem ipupm dolar stramer consecetur adiscipling sed do eiusmod tempor incididunt ut labore et dolore magna alique.'
+      techSpecifications: 'Lorem ipupm dolar stramer consecetur adiscipling sed do eiusmod tempor incididunt ut labore et dolore magna alique.',
+      colors: []
     }
   });
 
@@ -751,21 +794,24 @@ var rxLandingProductDetail = new Ractive({
    template: '#product-detail-landing-template',
    data: {
       isMobile: false,
-      computerSlide1: '../images/products/flashdrives/DSCF1113.jpg',
-      computerSlide2: '../images/products/flashdrives/DSCF1117.jpg',
-      computerSlide3: '../images/products/flashdrives/DSCF1112.jpg',
-      computerSlide4: '../images/products/flashdrives/DSCF1105.jpg',
-      computerSlide5: '../images/products/flashdrives/DSCF1131.jpg',
-      tabletSlide1: '../images/products/flashdrives/DSCF1113.jpg',
-      tabletSlide2: '../images/products/flashdrives/DSCF1117.jpg',
-      tabletSlide3: '../images/products/flashdrives/DSCF1112.jpg',
-      tabletSlide4: '../images/products/flashdrives/DSCF1105.jpg',
-      tabletSlide5: '../images/products/flashdrives/DSCF1131.jpg',
-      mobileSlide1: '../images/products/flashdrives/DSCF1113.jpg',
-      mobileSlide2: '../images/products/flashdrives/DSCF1117.jpg',
-      mobileSlide3: '../images/products/flashdrives/DSCF1112.jpg',
-      mobileSlide4: '../images/products/flashdrives/DSCF1105.jpg',
-      mobileSlide5: '../images/products/flashdrives/DSCF1131.jpg',
+      desktopCarousel: [],
+      tabletCarousel: [],
+      mobileCarousel: [],
+      computerSlide1: '',
+      computerSlide2: '',
+      computerSlide3: '',
+      computerSlide4: '',
+      computerSlide5: '',
+      tabletSlide1: '',
+      tabletSlide2: '',
+      tabletSlide3: '',
+      tabletSlide4: '',
+      tabletSlide5: '',
+      mobileSlide1: '',
+      mobileSlide2: '',
+      mobileSlide3: '',
+      mobileSlide4: '',
+      mobileSlide5: '',
    }
  });
 
@@ -791,7 +837,8 @@ var rxLandingProductDetail = new Ractive({
    template: '#get-quote-module',
    data: {
     file: null,
-    getQuoteProductSelect: 'product'
+    getQuoteProductSelect: 'product',
+    quoteOption: ''
    },
    onrender: function() {
     $('#get-quote-file-upload').on('change', function(event) {
@@ -815,11 +862,7 @@ var rxLandingProductDetail = new Ractive({
  });
 
   //carousel
-  $('.lazy').slick({
-    infinite: true,
-    lazyLoad: 'ondemand',
-    autoplay: true
-  });
+  //resetCarousel();
   //slows down application, although this works
   var prev = 'notset';
   rxLandingProductDetail.set('isMobile', ($('.mobile.only.row').css('display') != "none"));
@@ -844,33 +887,88 @@ if(sku == null) {
     if(cur.sku == sku) {
       count++;
       rxProductDetail.set('productTitle', cur.productTitle);
+      rxGetQuote.set('quoteOption', cur.productTitle);
       rxProductDetail.set('productUpperDescription', cur.productUpperDescription);
       rxProductDetail.set('productLowerDescription', cur.productLowerDescription);
       rxProductDetail.set('printingOptions', cur.printingOptions);
       rxProductDetail.set('techSpecifications', cur.techSpecifications);
-      if(cur.computerSlide1 != null)
-        rxLandingProductDetail.set('computerSlide1', cur.computerSlide1);
-      else
-        rxLandingProductDetail.set('computerSlide1', null);
-      if(cur.computerSlide2 != null)
-        rxLandingProductDetail.set('computerSlide2', cur.computerSlide2);
-      else
-        rxLandingProductDetail.set('computerSlide2', null);
-      if(cur.computerSlide3 != null)
-        rxLandingProductDetail.set('computerSlide3', cur.computerSlide3);
-      else
-        rxLandingProductDetail.set('computerSlide3', null);
-      if(cur.computerSlide4 != null)
-        rxLandingProductDetail.set('computerSlide4', cur.computerSlide4);
-      else
-        rxLandingProductDetail.set('computerSlide4', null);
-      if(cur.computerSlide5 != null)
-        rxLandingProductDetail.set('computerSlide5', cur.computerSlide5);
-      else
-        rxLandingProductDetail.set('computerSlide5', null);
+      //
+      rxProductDetail.set('colors', cur.colors);
+
+      var _dekstopCarousel = [],
+          _tabletCarousel = [],
+          _mobileCarousel = [];
+
+      if(typeof cur.computerSlide1 != 'undefined') {
+        _dekstopCarousel.push({image: cur.computerSlide1});
+      }
+
+      if(typeof cur.computerSlide2 != 'undefined') {
+         _dekstopCarousel.push({image: cur.computerSlide2});
+      }
+
+      if(typeof cur.computerSlide3 != 'undefined') {
+         _dekstopCarousel.push({image: cur.computerSlide3});
+      }
+
+      if(typeof cur.computerSlide4 != 'undefined') {
+         _dekstopCarousel.push({image: cur.computerSlide4});
+      }
+
+      if(typeof cur.computerSlide5 != 'undefined') {
+         _dekstopCarousel.push({image: cur.computerSlide5});
+      }
+
+      if(typeof cur.tabletSlide1 != 'undefined') {
+        _tabletCarousel.push({image: cur.tabletSlide1});
+      }
+
+      if(typeof cur.tabletSlide2 != 'undefined') {
+        _tabletCarousel.push({image: cur.tabletSlide2});
+      }
+
+      if(typeof cur.tabletSlide3 != 'undefined') {
+        _tabletCarousel.push({image: cur.tabletSlide3});
+      }
+
+      if(typeof cur.tabletSlide4 != 'undefined') {
+        _tabletCarousel.push({image: cur.tabletSlide4});
+      }
+
+      if(typeof cur.tabletSlide5 != 'undefined') {
+        _tabletCarousel.push({image: cur.tabletSlide5});
+      }
+
+      if(typeof cur.mobileSlide1 != 'undefined') {
+        _mobileCarousel.push({image: cur.mobileSlide1});
+      }
+
+      if(typeof cur.mobileSlide2 != 'undefined') {
+        _mobileCarousel.push({image: cur.mobileSlide2});
+      }
+
+      if(typeof cur.mobileSlide3 != 'undefined') {
+        _mobileCarousel.push({image: cur.mobileSlide3});
+      }
+
+      if(typeof cur.mobileSlide4 != 'undefined') {
+        _mobileCarousel.push({image: cur.mobileSlide4});
+      }
+
+      if(typeof cur.mobileSlide5 != 'undefined') {
+        _mobileCarousel.push({image: cur.mobileSlide5});
+      }
+
+      console.log(_dekstopCarousel);
+      console.log(_tabletCarousel);
+      console.log(_mobileCarousel);
+      rxLandingProductDetail.set('desktopCarousel', _dekstopCarousel);
+
+      rxLandingProductDetail.set('tabletCarousel', _tabletCarousel);
+
+      rxLandingProductDetail.set('mobileCarousel', _mobileCarousel);
+      
     }
-
-
   }
 
     if(count == 0) {
@@ -879,6 +977,17 @@ if(sku == null) {
     }
 }
 
+  window.onload = function() {
+    resetCarousel();
+  };
+
+  function resetCarousel() {
+      $('.lazy').slick({
+        infinite: true,
+        lazyLoad: 'ondemand',
+        autoplay: true
+      });
+  }
   setInterval(function() {
     if(prev == 'notset')
       prev = ($('.mobile.only.row').css('display') != "none");
